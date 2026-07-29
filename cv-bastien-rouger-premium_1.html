@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CV — Bastien Rouger, Infirmier D.E.</title>
+<style>
+  :root{
+    /* Si ça déborde en page 2 : baisser cette valeur */
+    --echelle:8.3pt;
+
+    --nuit:#12302A;        /* colonne latérale, vert nuit */
+    --nuit-clair:#1C463C;  /* dégradés et cartes sombres */
+    --laiton:#C79A3E;      /* accent principal */
+    --laiton-clair:#E4C685;
+    --craie:#EEF3F0;       /* texte sur fond sombre */
+    --craie-sourd:#9CB2A8;
+    --papier:#FCFAF7;
+    --encre:#1A211E;
+    --sourd:#6A7370;
+    --filet:#E2DCD1;
+  }
+
+  @page { size:A4; margin:0; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  body{
+    background:#B9BEBA;
+    font-family:"Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    color:var(--encre);
+  }
+
+  .barre{
+    padding:9px 14px; background:var(--nuit); color:var(--craie);
+    font-size:12px; text-align:center;
+  }
+  .barre button{
+    font:inherit; font-size:11px; margin-left:10px; padding:3px 10px; cursor:pointer;
+    background:transparent; color:var(--laiton-clair);
+    border:1px solid rgba(199,154,62,.55); border-radius:3px;
+  }
+
+  .page{
+    width:210mm; height:297mm; margin:16px auto;
+    background:var(--papier);
+    box-shadow:0 8px 34px rgba(0,0,0,.32);
+    display:grid; grid-template-columns:64mm 1fr;
+    font-size:var(--echelle); line-height:1.32; overflow:hidden;
+  }
+
+  /* ================= COLONNE SOMBRE ================= */
+  .flanc{
+    background:linear-gradient(168deg,var(--nuit-clair) 0%,var(--nuit) 46%,#0C231E 100%);
+    color:var(--craie);
+    padding:11mm 7mm 8mm;
+    position:relative;
+  }
+  /* liseré laiton sur la tranche */
+  .flanc::after{
+    content:""; position:absolute; top:0; right:0; width:2px; height:100%;
+    background:linear-gradient(180deg,var(--laiton) 0%,rgba(199,154,62,.15) 70%,transparent 100%);
+  }
+
+  .nom{
+    font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
+    font-size:20pt; font-weight:400; line-height:1.05; letter-spacing:-.3px; color:#fff;
+    white-space:nowrap;
+  }
+  .nom em{ font-style:normal; font-weight:700; color:var(--laiton-clair); }
+  .metier{
+    margin-top:7px; padding-top:7px;
+    border-top:1px solid rgba(199,154,62,.5);
+    font-size:8.2pt; font-weight:600; color:var(--craie-sourd); letter-spacing:.1px;
+  }
+
+  .flanc h2{
+    margin:10px 0 4px; padding-left:11px; position:relative;
+    font-size:7.1pt; font-weight:700; letter-spacing:1.8px; text-transform:uppercase;
+    color:var(--laiton);
+  }
+  .flanc h2::before{
+    content:""; position:absolute; left:0; top:.42em;
+    width:6px; height:6px; background:var(--laiton); transform:rotate(45deg);
+  }
+
+  .coord{ list-style:none; font-size:8.3pt; color:var(--craie); }
+  .coord li{ margin-bottom:2px; }
+  .coord li b{ font-size:10.4pt; color:#fff; letter-spacing:.3px; }
+
+  .flanc dl dt{
+    font-weight:700; color:var(--laiton-clair); font-size:7.9pt; margin-top:4px;
+    letter-spacing:.3px;
+  }
+  .flanc dl dt:first-child{ margin-top:0; }
+  .flanc dl dd{ font-size:8.1pt; color:var(--craie); opacity:.92; }
+
+  .dispo{ font-size:8.2pt; color:var(--craie); line-height:1.42; }
+  .dispo b{ color:var(--laiton-clair); font-weight:700; }
+
+  .horizon{
+    position:absolute; left:0; right:0; bottom:0;
+    width:100%; height:19mm; display:block;
+  }
+  body.encre-legere .horizon path{ fill:#8A6520; }
+
+  .diplome{ margin-bottom:4px; font-size:8.3pt; }
+  .diplome b{ font-weight:700; color:#fff; }
+  .diplome span{ display:block; color:var(--craie-sourd); font-size:7.8pt; line-height:1.28; }
+
+  /* ================= COLONNE CLAIRE ================= */
+  .corps{ padding:10mm 8.5mm 7mm 8mm; }
+
+  .mobilite{
+    padding:6px 11px; border-radius:4px;
+    background:#fff; border-left:3px solid var(--laiton);
+    box-shadow:0 2px 8px rgba(18,48,42,.10);
+    font-size:8.4pt;
+  }
+  .mobilite strong{ color:var(--nuit); }
+
+  .accroche{
+    margin-top:9px;
+    font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
+    font-size:9.2pt; line-height:1.38; color:#2A322E;
+  }
+
+  .corps h2{
+    margin:9px 0 5px; padding-bottom:3px;
+    font-size:7.1pt; font-weight:700; letter-spacing:1.8px; text-transform:uppercase;
+    color:var(--nuit);
+    border-bottom:2px solid var(--laiton);
+    display:inline-block; padding-right:18px;
+  }
+
+  /* ---------- Capsule sombre : point d'ancrage visuel ---------- */
+  .capsule{
+    display:grid; grid-template-columns:repeat(3,1fr);
+    border-radius:20px; overflow:hidden;
+    background:linear-gradient(100deg,var(--nuit) 0%,var(--nuit-clair) 55%,#2E3A26 100%);
+    box-shadow:0 5px 16px rgba(18,48,42,.30);
+  }
+  .zone{ padding:8px 11px 9px; }
+  .zone + .zone{ border-left:1px solid rgba(238,243,240,.14); }
+  .zone h3{
+    font-size:6.8pt; font-weight:700; letter-spacing:1.1px; text-transform:uppercase;
+    color:var(--laiton-clair); margin-bottom:5px;
+  }
+  .puces{ display:flex; flex-wrap:wrap; gap:3px; }
+  .puces span{
+    font-size:7.5pt; color:var(--craie);
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(238,243,240,.22);
+    border-radius:9px; padding:1px 7px; white-space:nowrap;
+  }
+  .legende{
+    margin-top:4px; padding:0 5px; font-size:7.3pt; color:var(--sourd); font-style:italic;
+    display:flex; justify-content:space-between;
+  }
+
+  /* ---------- Chiffres en cartes ---------- */
+  .chiffres{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:5px; margin-top:7px;
+  }
+  .chiffres div{
+    background:#fff; border:1px solid var(--filet); border-top:2px solid var(--laiton);
+    border-radius:4px; padding:6px 5px; text-align:center;
+    box-shadow:0 2px 6px rgba(18,48,42,.09);
+  }
+  .chiffres b{
+    display:block; font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
+    font-size:14.5pt; font-weight:700; color:var(--nuit); line-height:1;
+  }
+  .chiffres span{ display:block; margin-top:2px; font-size:6.8pt; color:var(--sourd); line-height:1.18; }
+
+  /* ---------- Parcours ---------- */
+  .poste{
+    display:grid; grid-template-columns:66px 1fr; gap:10px;
+    padding-bottom:5px; margin-bottom:5px; border-bottom:1px solid var(--filet);
+    position:relative;
+  }
+  .poste:last-child{ border-bottom:0; padding-bottom:0; margin-bottom:0; }
+  .dates{ font-size:7.7pt; font-weight:700; color:var(--nuit); line-height:1.22; padding-top:2px; }
+  .dates .encours{
+    display:block; font-weight:700; color:var(--laiton);
+    font-size:7pt; text-transform:uppercase; letter-spacing:.5px;
+  }
+  .intitule{ font-size:9.6pt; font-weight:700; color:var(--nuit); }
+  .lieu{ font-size:8.2pt; color:var(--sourd); margin-bottom:2px; }
+  .poste ul{ list-style:none; }
+  .poste li{ padding-left:10px; position:relative; }
+  .poste li::before{
+    content:""; position:absolute; left:0; top:.5em;
+    width:4px; height:4px; border-radius:50%; background:#C9D2CD;
+  }
+  .poste li.fort{ font-weight:600; color:#232B27; }
+  .poste li.fort::before{ background:var(--laiton); width:5px; height:5px; top:.45em; }
+  .poste li b{ font-weight:700; }
+
+  /* ================= Mode encre légère (écran/impression économe) ================= */
+  body.encre-legere .flanc{ background:#EDE9DF; color:var(--encre); }
+  body.encre-legere .flanc::after{ background:var(--laiton); }
+  body.encre-legere .nom{ color:var(--encre); }
+  body.encre-legere .nom em{ color:#8A6520; }
+  body.encre-legere .metier{ color:var(--sourd); }
+  body.encre-legere .coord{ color:var(--encre); }
+  body.encre-legere .coord li b{ color:var(--encre); }
+  body.encre-legere .flanc dl dt{ color:#8A6520; }
+  body.encre-legere .flanc dl dd{ color:var(--encre); }
+  body.encre-legere .diplome b{ color:var(--encre); }
+  body.encre-legere .diplome span{ color:var(--sourd); }
+  body.encre-legere .capsule{
+    background:linear-gradient(100deg,#DDE6E2 0%,#EAEFEC 52%,#F5EEE0 100%);
+    box-shadow:none;
+  }
+  body.encre-legere .zone h3{ color:#8A6520; }
+  body.encre-legere .zone + .zone{ border-left:1px solid rgba(0,0,0,.10); }
+  body.encre-legere .puces span{ color:var(--encre); background:#fff; border-color:rgba(0,0,0,.10); }
+
+  @media print{
+    /* Force l'impression des aplats meme si la case
+       « graphiques d'arriere-plan » est decochee */
+    *{ -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+    body{ background:#fff; }
+    .barre{ display:none; }
+    .page{
+      margin:0; box-shadow:none;
+      width:210mm; height:297mm;
+      display:grid; grid-template-columns:64mm 1fr;
+    }
+    .capsule{ grid-template-columns:repeat(3,1fr); }
+    .chiffres{ grid-template-columns:repeat(4,1fr); }
+    .poste{ grid-template-columns:66px 1fr; }
+  }
+
+  @media screen and (max-width:760px){
+    .page{ width:auto; height:auto; grid-template-columns:1fr; font-size:11pt; }
+    .flanc{ padding:22px; }
+    .corps{ padding:22px; }
+    .poste{ grid-template-columns:1fr; gap:3px; }
+    .capsule{ grid-template-columns:1fr; border-radius:16px; }
+    .zone + .zone{ border-left:0; border-top:1px solid rgba(238,243,240,.14); }
+    .chiffres{ grid-template-columns:repeat(2,1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div class="barre">
+  Ctrl/Cmd + P → « Enregistrer en PDF » · marges « aucune » · cocher les graphiques d’arrière-plan
+  <button id="bascule">Mode encre légère</button>
+</div>
+
+<div class="page">
+
+  <aside class="flanc">
+    <p class="nom">Bastien <em>Rouger</em></p>
+    <p class="metier">Infirmier D.E. — de la réanimation au soin à domicile</p>
+
+    <h2>Contact</h2>
+    <ul class="coord">
+      <li><b>06 98 43 33 60</b></li>
+      <li>bastien.rouger@gmail.com</li>
+      <li>Permis B — véhiculé</li>
+      <li>D.E. décembre 2016</li>
+      <li>RPPS 10103462106</li>
+    </ul>
+
+    <h2>Savoir-faire</h2>
+    <dl>
+      <dt>Technique</dt>
+      <dd>Réanimation · urgences · pansements complexes · perfusions et PAC · hématologie, oncologie · soins palliatifs</dd>
+      <dt>Autonomie</dt>
+      <dd>Tournée libérale complète · facturation et télétransmission · coordination ville‑hôpital</dd>
+      <dt>Relationnel</dt>
+      <dd>Publics vulnérables · médiation · accompagnement des aidants</dd>
+      <dt>Logiciels</dt>
+      <dd>Agathe YOU · Expert Santé · HM · Osiris · Mobisoins · Hublo</dd>
+      <dt>Langues</dt>
+      <dd>Français courant · anglais intermédiaire</dd>
+    </dl>
+
+    <h2>Formation</h2>
+    <p class="diplome"><b>2016 — Diplôme d’État d’Infirmier</b><span>IFSI de Quimper</span></p>
+    <p class="diplome"><b>2023 — CQP Ouvrier viticole</b><span>MFR de Claret</span></p>
+    <p class="diplome"><b>2012 — Baccalauréat ST2S</b><span>Lycée Talensac, Nantes</span></p>
+    <p class="diplome"><b>PSE2</b><span>Premiers secours en équipe niveau 2</span></p>
+
+    <h2>En dehors</h2>
+    <p class="diplome"><b>Élevage d’Irish Cob</b><span>Activité familiale — à l’origine du projet d’installation en Creuse</span></p>
+    <p class="diplome"><b>Secourisme bénévole</b><span>FNPC Loire-Atlantique, équipier — 2012 à 2016. Postes de secours sur grands rassemblements (Vieilles Charrues).</span></p>
+    <p class="diplome"><b>Aussi</b><span>Développement web · moto · photographie</span></p>
+
+    <h2>Disponibilité</h2>
+    <p class="dispo">Immédiate pour des remplacements ponctuels et des missions.<br>
+    Installation en Creuse à partir de l’automne 2026.<br>
+    <b>Guéret · Boussac · Genouillac · Aubusson</b></p>
+
+    <svg class="horizon" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 46 V30 C22 22 38 34 58 28 C78 22 92 32 116 26 C140 20 162 30 200 22 V46 Z" fill="var(--laiton)" opacity=".10"/>
+      <path d="M0 46 V36 C26 30 44 40 66 35 C90 29 108 38 132 33 C158 28 176 36 200 31 V46 Z" fill="var(--laiton)" opacity=".16"/>
+      <path d="M0 46 V41 C30 37 52 44 78 40 C104 36 126 43 152 39 C172 36 186 41 200 39 V46 Z" fill="var(--laiton)" opacity=".26"/>
+    </svg>
+  </aside>
+
+  <main class="corps">
+    <p class="mobilite">
+      <strong>Installation en Creuse en cours.</strong> Achat d’une propriété dans le secteur de Ladapeyre,
+      financement validé avec la banque. Je connais déjà la région : j’y ai exercé, à Montluçon, à une heure
+      de Guéret. Disponible pour un entretien ou un essai de tournée quand vous voulez.
+    </p>
+
+    <p class="accroche">
+      Huit ans d’exercice, de la réanimation au domicile. Deux ans en réanimation à la Clinique du Millénaire,
+      dont toute la crise Covid, des vacations dans dix-huit établissements depuis 2018, et aujourd’hui des tournées
+      libérales en autonomie dans des cabinets ruraux. Je m’installe en Creuse et je cherche à y exercer
+      durablement — poste salarié, missions d’intérim ou remplacements en libéral.
+    </p>
+
+    <h2>Terrains d’exercice</h2>
+    <div class="capsule">
+      <div class="zone">
+        <h3>Soins critiques</h3>
+        <div class="puces"><span>Réanimation</span><span>USC</span><span>USIC</span><span>Urgences</span></div>
+      </div>
+      <div class="zone">
+        <h3>Hospitalisation</h3>
+        <div class="puces"><span>Médecine</span><span>Chirurgie</span><span>Pneumologie</span><span>Oncologie</span><span>SSR onco-hémato</span></div>
+      </div>
+      <div class="zone">
+        <h3>Proximité</h3>
+        <div class="puces"><span>Domicile</span><span>Rural</span><span>Gériatrie</span><span>Médico-social</span></div>
+      </div>
+    </div>
+    <p class="legende"><span>Du patient intubé…</span><span>…au patient en rupture de soins.</span></p>
+
+    <div class="chiffres">
+      <div><b>8</b><span>ans d’exercice infirmier</span></div>
+      <div><b>2</b><span>ans en réanimation, dont le Covid</span></div>
+      <div><b>3</b><span>modes d’exercice : hôpital, libéral, médico‑social</span></div>
+      <div><b>18</b><span>établissements depuis 2018</span></div>
+    </div>
+
+    <h2>Parcours</h2>
+
+    <article class="poste">
+      <div class="dates">2025 → <span class="encours">Aujourd’hui</span></div>
+      <div>
+        <div class="intitule">Infirmier libéral remplaçant</div>
+        <div class="lieu">Cinq cabinets ruraux du Gard — Combas, Aubais, Quissac, Domessargues, Carnas</div>
+        <ul>
+          <li>Tournées reprises en autonomie complète, de 10 à 40 passages par jour selon les cabinets.</li>
+          <li>Retours de bloc à domicile avec perfusion, HAD (chimiothérapie, fin de vie, surveillance de prématuré), pansements complexes, BSI et suivis chroniques.</li>
+          <li>Selon les cabinets : saisie des ordonnances, facturation et sécurisation des actes sur Agathe YOU. Coordination avec les médecins traitants, les familles et les intervenants du domicile.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="poste">
+      <div class="dates">2018 → 2021<br>et depuis 2023</div>
+      <div>
+        <div class="intitule">Intérim et vacations hospitalières</div>
+        <div class="lieu">Appel Médical (Montpellier, Nîmes) · Hublo</div>
+        <ul>
+          <li><b>Clinique des Franciscaines</b>, Nîmes — réanimation, USIC, USC, chirurgie.</li>
+          <li><b>Mas du Rochet</b> (34) — SSR hématologie, oncologie et soins palliatifs.</li>
+          <li><b>CHU de Montpellier</b> (médecine, greffe), <b>ICM</b>, <b>Saint-Jean</b>, <b>Saint-Roch</b>, <b>Clinique du Parc</b> — urgences, USC, oncologie, chirurgie. Et une dizaine d’autres, en Occitanie et en Pays de la Loire.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="poste">
+      <div class="dates">2024 → 2025</div>
+      <div>
+        <div class="intitule">Infirmier — dispositif PIMAS</div>
+        <div class="lieu">Le Vigan (30) — CDD à 40 %</div>
+        <ul>
+          <li>Personnes en rupture de soins : bilans, médiation, orientation, coordination pluridisciplinaire. Santé publique : vaccination, dépistage des hépatites.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="poste">
+      <div class="dates">2021 → 2023</div>
+      <div>
+        <div class="intitule">Ouvrier viticole en alternance — CQP</div>
+        <div class="lieu">MFR de Claret &amp; domaine Le Clos du Martinou, Liouc (30)</div>
+        <ul>
+          <li>Exploitation familiale de 17 ha : tracteur, maintenance, cultures annexes.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="poste">
+      <div class="dates">2019 → 2021</div>
+      <div>
+        <div class="intitule">Infirmier de réanimation</div>
+        <div class="lieu">Clinique du Millénaire, Montpellier</div>
+        <ul>
+          <li class="fort">Arrivé en mission d’intérim en réanimation, puis recruté en contrats directs : l’établissement a racheté la mission à l’agence pour garder un infirmier de réa opérationnel.</li>
+          <li>Poste fixe en réanimation pendant toute la crise Covid ; également USC et chirurgie.</li>
+          <li>Ventilation et sevrage des post-opératoires jusqu’à l’extubation, sédation, épuration extra-rénale, décubitus ventral.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="poste">
+      <div class="dates">2016 → 2017</div>
+      <div>
+        <div class="intitule">Débuts</div>
+        <ul>
+          <li><b>Hôpital privé Saint-François</b>, Montluçon (03) — infirmier en pneumologie, CDI, 2017.</li>
+          <li><b>CHU de Nantes</b> — aide-soignant, pôle gériatrie, SSR et EHPAD, 2016.</li>
+        </ul>
+      </div>
+    </article>
+
+  </main>
+
+</div>
+
+<script>
+document.getElementById("bascule").addEventListener("click", function(){
+  var actif = document.body.classList.toggle("encre-legere");
+  this.textContent = actif ? "Mode couleur pleine" : "Mode encre légère";
+});
+</script>
+
+</body>
+</html>

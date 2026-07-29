@@ -1,0 +1,311 @@
+/* ============================================================
+   Bastien Rouger — CV en ligne
+   Système visuel repris du CV PDF (cv-bastien-rouger-premium_1.html)
+   ============================================================ */
+
+:root{
+  --nuit:#12302A;
+  --nuit-clair:#1C463C;
+  --laiton:#C79A3E;
+  --laiton-clair:#E4C685;
+  --craie:#EEF3F0;
+  --craie-sourd:#9CB2A8;
+  --papier:#FCFAF7;
+  --encre:#1A211E;
+  --sourd:#6A7370;
+  --filet:#E2DCD1;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+html{ scroll-behavior:smooth; }
+
+body{
+  background:var(--papier);
+  color:var(--encre);
+  font-family:"Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+  line-height:1.5;
+  font-size:15.5px;
+}
+
+a{ color:inherit; }
+
+.serif{ font-family:Georgia,"Iowan Old Style","Times New Roman",serif; }
+
+/* ---------------- En-tête / nav ---------------- */
+header.site{
+  background:linear-gradient(168deg,var(--nuit-clair) 0%,var(--nuit) 55%,#0C231E 100%);
+  color:var(--craie);
+  border-bottom:2px solid var(--laiton);
+}
+.site-inner{
+  max-width:1140px; margin:0 auto; padding:22px 24px 18px;
+  display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:14px;
+}
+.identite .nom{
+  font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
+  font-size:26pt; font-weight:400; color:#fff; letter-spacing:-.3px;
+}
+.identite .nom em{ font-style:normal; font-weight:700; color:var(--laiton-clair); }
+.identite .metier{
+  margin-top:4px; font-size:12.5px; color:var(--craie-sourd); font-weight:600;
+}
+.site-actions{ display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+nav.principale{ display:flex; gap:18px; font-size:13.5px; font-weight:600; letter-spacing:.2px; }
+nav.principale a{
+  text-decoration:none; color:var(--craie); padding-bottom:3px; border-bottom:2px solid transparent;
+}
+nav.principale a:hover, nav.principale a.actif{ border-bottom-color:var(--laiton); color:#fff; }
+
+.bouton-contact{
+  display:inline-block; font-size:12.5px; font-weight:700; letter-spacing:.2px;
+  padding:8px 18px; border-radius:20px; white-space:nowrap;
+  background:var(--laiton); color:var(--nuit); text-decoration:none;
+  transition:background .15s ease, transform .1s ease;
+}
+.bouton-contact:hover{ background:var(--laiton-clair); }
+.bouton-contact:active{ transform:scale(.96); }
+
+/* ---------------- Conteneur ---------------- */
+main.page-corps{ max-width:1140px; margin:0 auto; padding:34px 24px 60px; }
+
+/* ---------------- Bandeau mobilité ---------------- */
+.mobilite{
+  padding:14px 18px; border-radius:6px; margin-bottom:26px;
+  background:#fff; border-left:4px solid var(--laiton);
+  box-shadow:0 2px 10px rgba(18,48,42,.08);
+  font-size:14.5px;
+}
+.mobilite strong{ color:var(--nuit); }
+
+/* ---------------- Accroche ---------------- */
+.accroche{
+  font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
+  font-size:16.5px; line-height:1.55; color:#2A322E; margin-bottom:28px;
+  max-width:760px;
+}
+
+/* ---------------- Titres de section ---------------- */
+h2.titre{
+  margin:34px 0 14px; padding-bottom:5px;
+  font-size:12.5px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase;
+  color:var(--nuit); border-bottom:2px solid var(--laiton);
+  display:inline-block; padding-right:20px;
+}
+main.page-corps > h2.titre:first-of-type{ margin-top:0; }
+
+h1.titre-page{
+  font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
+  font-size:24px; color:var(--nuit); margin-bottom:6px;
+}
+p.chapo{ color:var(--sourd); font-size:14.5px; margin-bottom:26px; max-width:640px; }
+
+/* ---------------- Terrains d'exercice : panneau interactif ---------------- */
+.panneau-terrains{
+  display:grid; grid-template-columns:36% 1fr;
+  border-radius:20px; overflow:hidden; margin-bottom:8px;
+  box-shadow:0 10px 30px rgba(18,48,42,.16);
+  background:#fff;
+}
+
+.panneau-resume{
+  position:relative; overflow:hidden; height:300px;
+  background:linear-gradient(160deg,var(--nuit-clair) 0%,var(--nuit) 60%,#0C231E 100%);
+  color:var(--craie);
+  padding:30px 26px;
+  display:flex; align-items:center;
+}
+.resume-contenu{ position:relative; z-index:1; max-height:100%; overflow:hidden; }
+.resume-icone{ font-size:32px; display:block; margin-bottom:12px; }
+.resume-titre{
+  font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
+  font-size:21px; font-weight:400; color:#fff; margin-bottom:10px;
+}
+.resume-texte{ font-size:13.5px; line-height:1.55; color:var(--craie); opacity:.92; margin-bottom:14px; }
+.resume-contenu .puces{ display:flex; flex-wrap:wrap; gap:6px; }
+.resume-contenu .puces span{
+  font-size:11.5px; color:var(--craie); background:rgba(255,255,255,.12);
+  border:1px solid rgba(238,243,240,.24); border-radius:10px; padding:3px 9px; white-space:nowrap;
+}
+
+.panneau-cases{ padding:28px 30px 26px; }
+
+.spectre-jauge{
+  position:relative; height:8px; border-radius:5px; margin-bottom:6px;
+  background:linear-gradient(90deg,var(--nuit) 0%,var(--nuit-clair) 45%,var(--laiton-clair) 100%);
+}
+.spectre-jauge .curseur{
+  position:absolute; top:50%; width:16px; height:16px; border-radius:50%;
+  background:#fff; border:3px solid var(--laiton); transform:translate(-50%,-50%);
+  transition:left .3s ease; box-shadow:0 2px 6px rgba(18,48,42,.32);
+}
+.legende{
+  margin:2px 0 18px; padding:0 2px; font-size:12.5px; color:var(--sourd); font-style:italic;
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:4px;
+}
+
+.cases-domaine{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.case-domaine{
+  text-align:center; font:inherit; cursor:pointer; background:#fff; border:1.5px solid var(--filet);
+  border-radius:12px; padding:16px 16px 14px; display:flex; flex-direction:column; align-items:center; gap:5px;
+  transition:border-color .15s ease, box-shadow .15s ease, transform .1s ease, background .15s ease;
+}
+.case-domaine:hover, .case-domaine:focus-visible{
+  border-color:var(--laiton); box-shadow:0 4px 14px rgba(18,48,42,.10); transform:translateY(-1px);
+}
+.case-domaine.actif{
+  border-color:var(--laiton); background:var(--papier); box-shadow:0 4px 14px rgba(199,154,62,.20);
+}
+.case-entete{ display:flex; align-items:center; justify-content:center; gap:8px; }
+.case-icone{ font-size:19px; line-height:1; }
+.case-titre{ font-weight:700; color:var(--nuit); font-size:13.5px; }
+.case-desc{ font-size:12px; color:var(--sourd); line-height:1.4; }
+.case-lien{
+  margin-top:5px; font-size:11px; font-weight:700; letter-spacing:.4px;
+  text-transform:uppercase; color:var(--laiton);
+}
+
+/* ---------------- Profil (formation, savoir-faire, en dehors, disponibilité) ---------------- */
+.profil-grille{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:6px; }
+.profil-carte{
+  background:#fff; border:1px solid var(--filet); border-radius:8px; padding:16px 18px;
+  box-shadow:0 2px 8px rgba(18,48,42,.06);
+}
+.profil-carte h3{
+  font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase;
+  color:var(--laiton); margin-bottom:11px;
+}
+.profil-carte p{ font-size:13.5px; line-height:1.5; }
+.profil-carte .diplome{ margin-bottom:9px; }
+.profil-carte .diplome:last-child{ margin-bottom:0; }
+.profil-carte .diplome b{ display:block; color:var(--nuit); font-weight:700; font-size:13.5px; }
+.profil-carte .diplome span{ display:block; color:var(--sourd); font-size:12.5px; line-height:1.35; margin-top:1px; }
+.profil-carte .tags{ display:flex; flex-wrap:wrap; gap:6px; }
+.profil-carte .tags span{
+  font-size:12px; padding:3px 10px; background:var(--papier); border:1px solid var(--filet);
+  border-radius:10px; color:var(--encre);
+}
+
+/* ---------------- Chiffres ---------------- */
+.chiffres{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:14px;
+}
+.chiffres div{
+  background:#fff; border:1px solid var(--filet); border-top:3px solid var(--laiton);
+  border-radius:6px; padding:14px 8px; text-align:center;
+  box-shadow:0 2px 8px rgba(18,48,42,.08);
+}
+.chiffres b{
+  display:block; font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
+  font-size:24px; font-weight:700; color:var(--nuit); line-height:1;
+}
+.chiffres span{ display:block; margin-top:5px; font-size:11.5px; color:var(--sourd); line-height:1.25; }
+
+/* ---------------- Parcours (timeline) ---------------- */
+.poste{
+  display:grid; grid-template-columns:110px 1fr; gap:18px;
+  padding-bottom:16px; margin-bottom:16px; border-bottom:1px solid var(--filet);
+}
+.poste:last-child{ border-bottom:0; }
+.dates{ font-size:13px; font-weight:700; color:var(--nuit); line-height:1.3; padding-top:2px; }
+.dates .encours{
+  display:inline-block; margin-top:3px; font-weight:700; color:var(--laiton);
+  font-size:11px; text-transform:uppercase; letter-spacing:.5px;
+}
+.intitule{ font-size:16px; font-weight:700; color:var(--nuit); }
+.lieu{ font-size:13.5px; color:var(--sourd); margin-bottom:6px; }
+.poste ul{ list-style:none; }
+.poste li{ padding-left:14px; position:relative; margin-bottom:3px; font-size:14px; }
+.poste li::before{
+  content:""; position:absolute; left:0; top:.55em;
+  width:5px; height:5px; border-radius:50%; background:#C9D2CD;
+}
+.poste li.fort{ font-weight:600; color:#232B27; }
+.poste li.fort::before{ background:var(--laiton); width:6px; height:6px; top:.5em; }
+.poste li b{ font-weight:700; }
+
+/* ---------------- Sections déroulantes (style commun) ---------------- */
+/* Utilisé par .section-pliable (Profil, Parcours) et .accordeon (Détail complet) : */
+/* même logique de +/-, mêmes séparateurs, seule la taille du titre change. */
+
+.section-pliable, .accordeon{ border-bottom:1px solid var(--filet); }
+.section-pliable:first-of-type{ border-top:1px solid var(--filet); }
+
+.section-entete, .accordeon summary{
+  list-style:none; cursor:pointer;
+  display:flex; align-items:center; justify-content:space-between; gap:14px;
+  padding:14px 2px;
+  transition:color .15s ease;
+}
+.section-entete::-webkit-details-marker, .accordeon summary::-webkit-details-marker{ display:none; }
+
+.section-entete h2.titre{ margin:0; }
+.section-entete:hover h2.titre{ color:var(--laiton); }
+
+.accordeon summary{ font-weight:700; color:var(--nuit); font-size:14.5px; }
+.accordeon summary:hover{ color:var(--laiton); }
+
+.signe{ flex:none; color:var(--laiton); font-size:20px; font-weight:700; line-height:1; }
+.signe::before{ content:"+"; }
+details[open] > summary .signe::before{ content:"–"; }
+
+.section-corps{ padding:6px 0 30px; }
+.accordeon-corps{ padding:4px 2px 24px; }
+.accordeon-corps > *:last-child{ margin-bottom:0; }
+
+/* ---------------- Tableaux (page parcours) ---------------- */
+table.tableau{
+  width:100%; border-collapse:collapse; font-size:13.5px; margin-bottom:8px;
+  background:#fff; box-shadow:0 2px 8px rgba(18,48,42,.06);
+}
+table.tableau th, table.tableau td{
+  text-align:left; padding:9px 12px; border-bottom:1px solid var(--filet);
+  vertical-align:top;
+}
+table.tableau th{
+  background:var(--nuit); color:var(--craie); font-size:10.5px; text-transform:uppercase;
+  letter-spacing:.8px; font-weight:700;
+}
+table.tableau tr:last-child td{ border-bottom:0; }
+table.tableau td.fort{ font-weight:700; color:var(--nuit); }
+
+.note{
+  font-size:13px; color:var(--sourd); font-style:italic; margin:10px 0 24px; max-width:640px;
+}
+
+/* ---------------- Chronologie détaillée ---------------- */
+.chrono-groupe{ margin-bottom:26px; }
+.chrono-groupe h3{
+  font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
+  font-size:15px; color:var(--laiton); margin-bottom:10px;
+}
+.chrono-item{ display:grid; grid-template-columns:120px 1fr; gap:16px; margin-bottom:10px; font-size:14px; }
+.chrono-item .periode{ font-weight:700; color:var(--nuit); font-size:13px; }
+
+/* ---------------- Pied de page ---------------- */
+footer.site{
+  border-top:1px solid var(--filet); margin-top:40px; padding:22px 24px 40px;
+  color:var(--sourd); font-size:13px;
+}
+footer.site .footer-inner{ max-width:1140px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+footer.site b{ color:var(--nuit); }
+footer.site a{ text-decoration:none; border-bottom:1px dotted var(--sourd); }
+footer.site a:hover{ color:var(--nuit); border-bottom-color:var(--nuit); }
+
+/* ---------------- Responsive ---------------- */
+@media (max-width:680px){
+  .site-inner{ flex-direction:column; align-items:flex-start; }
+  main.page-corps{ padding:26px 18px 50px; }
+  .capsule{ grid-template-columns:1fr; border-radius:16px; }
+  .zone + .zone{ border-left:0; border-top:1px solid rgba(238,243,240,.14); }
+  .chiffres{ grid-template-columns:repeat(2,1fr); }
+  .poste{ grid-template-columns:1fr; gap:4px; }
+  .chrono-item{ grid-template-columns:1fr; gap:2px; }
+  table.tableau{ font-size:12.5px; }
+  table.tableau th, table.tableau td{ padding:7px 8px; }
+  .profil-grille{ grid-template-columns:1fr; }
+  .panneau-terrains{ grid-template-columns:1fr; border-radius:16px; }
+  .panneau-resume{ height:220px; padding:24px 22px; }
+  .panneau-cases{ padding:22px 20px 20px; }
+  .cases-domaine{ grid-template-columns:1fr; }
+}
