@@ -116,12 +116,19 @@ p.chapo{ color:var(--sourd); font-size:14.5px; margin-bottom:26px; max-width:640
   display:flex; align-items:center;
 }
 .resume-contenu{ position:relative; z-index:1; max-height:100%; overflow:hidden; }
-.resume-icone{ font-size:32px; display:block; margin-bottom:12px; }
+.resume-icone{
+  display:block; width:30px; height:30px; margin-bottom:12px; color:var(--laiton-clair);
+}
+.resume-icone svg{ width:100%; height:100%; }
 .resume-titre{
   font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
   font-size:21px; font-weight:400; color:#fff; margin-bottom:10px;
 }
-.resume-texte{ font-size:13.5px; line-height:1.55; color:var(--craie); opacity:.92; margin-bottom:14px; }
+.resume-texte{
+  font-size:13.5px; line-height:1.5; color:var(--craie); opacity:.92; margin-bottom:14px;
+  display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:4; overflow:hidden;
+  max-height:6.1em;
+}
 .resume-contenu .puces{ display:flex; flex-wrap:wrap; gap:6px; }
 .resume-contenu .puces span{
   font-size:11.5px; color:var(--craie); background:rgba(255,255,255,.12);
@@ -157,13 +164,10 @@ p.chapo{ color:var(--sourd); font-size:14.5px; margin-bottom:26px; max-width:640
   border-color:var(--laiton); background:var(--papier); box-shadow:0 4px 14px rgba(199,154,62,.20);
 }
 .case-entete{ display:flex; align-items:center; justify-content:center; gap:8px; }
-.case-icone{ font-size:19px; line-height:1; }
+.case-icone{ display:inline-flex; width:19px; height:19px; color:var(--laiton); }
+.case-icone svg{ width:100%; height:100%; }
 .case-titre{ font-weight:700; color:var(--nuit); font-size:13.5px; }
 .case-desc{ font-size:12px; color:var(--sourd); line-height:1.4; }
-.case-lien{
-  margin-top:5px; font-size:11px; font-weight:700; letter-spacing:.4px;
-  text-transform:uppercase; color:var(--laiton);
-}
 
 /* ---------------- Profil (formation, savoir-faire, en dehors, disponibilité) ---------------- */
 .profil-grille{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:6px; }
@@ -185,6 +189,9 @@ p.chapo{ color:var(--sourd); font-size:14.5px; margin-bottom:26px; max-width:640
   font-size:12px; padding:3px 10px; background:var(--papier); border:1px solid var(--filet);
   border-radius:10px; color:var(--encre);
 }
+.profil-carte .tags.tags-espacees{ margin-top:10px; }
+.profil-carte .savoir-ligne{ margin-bottom:8px; }
+.profil-carte .savoir-label{ color:var(--nuit); }
 
 /* ---------------- Chiffres ---------------- */
 .chiffres{
@@ -296,8 +303,6 @@ footer.site a:hover{ color:var(--nuit); border-bottom-color:var(--nuit); }
 @media (max-width:680px){
   .site-inner{ flex-direction:column; align-items:flex-start; }
   main.page-corps{ padding:26px 18px 50px; }
-  .capsule{ grid-template-columns:1fr; border-radius:16px; }
-  .zone + .zone{ border-left:0; border-top:1px solid rgba(238,243,240,.14); }
   .chiffres{ grid-template-columns:repeat(2,1fr); }
   .poste{ grid-template-columns:1fr; gap:4px; }
   .chrono-item{ grid-template-columns:1fr; gap:2px; }
@@ -305,7 +310,7 @@ footer.site a:hover{ color:var(--nuit); border-bottom-color:var(--nuit); }
   table.tableau th, table.tableau td{ padding:7px 8px; }
   .profil-grille{ grid-template-columns:1fr; }
   .panneau-terrains{ grid-template-columns:1fr; border-radius:16px; }
-  .panneau-resume{ height:220px; padding:24px 22px; }
+  .panneau-resume{ height:250px; padding:24px 22px; }
   .panneau-cases{ padding:22px 20px 20px; }
   .cases-domaine{ grid-template-columns:1fr; }
 }

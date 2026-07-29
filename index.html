@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bastien Rouger — Infirmier D.E.</title>
 <meta name="description" content="Infirmier D.E., 8 ans d'exercice de la réanimation au domicile. Installation en Creuse — disponible pour remplacements, missions et postes.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bastien Rouger — Infirmier D.E.">
+<meta property="og:description" content="Infirmier D.E., 8 ans d'exercice de la réanimation au domicile. Installation en Creuse — disponible pour remplacements, missions et postes.">
+<meta property="og:locale" content="fr_FR">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -43,16 +47,17 @@
   </p>
 
   <h2 class="titre" id="terrains">Terrains d'exercice</h2>
-  <p class="chapo">Un seul et même infirmier, du patient intubé au patient en rupture de soins. Survolez —
-  ou sélectionnez sur mobile — un domaine pour voir la synthèse. Le détail complet est plus bas.</p>
+  <p class="chapo">Un seul et même infirmier, du patient intubé au patient en rupture de soins. Le détail complet est plus bas.</p>
 
   <div class="panneau-terrains">
     <div class="panneau-resume">
       <div class="resume-contenu">
-        <span class="resume-icone" id="resume-icone">🫀</span>
+        <span class="resume-icone" id="resume-icone" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l1.8-4.5L11 18l2.2-10L15 12h7"/></svg>
+        </span>
         <h3 class="resume-titre" id="resume-titre">Soins critiques</h3>
         <p class="resume-texte" id="resume-texte">Réanimation, USC, USIC, urgences. Pratiqué à la Clinique du
-        Millénaire dès 2019 — poste fixe pendant le Covid — et dans une dizaine d'établissements en intérim.</p>
+        Millénaire dès 2019, poste fixe pendant le Covid, et dans une dizaine d'établissements en intérim.</p>
         <div class="puces" id="resume-tags">
           <span>Réanimation</span><span>USC</span><span>USIC</span><span>Urgences</span>
         </div>
@@ -66,40 +71,43 @@
       <div class="cases-domaine">
         <button class="case-domaine actif" data-cible="critiques" type="button">
           <span class="case-entete">
-            <span class="case-icone" aria-hidden="true">🫀</span>
+            <span class="case-icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l1.8-4.5L11 18l2.2-10L15 12h7"/></svg>
+            </span>
             <span class="case-titre">Soins critiques</span>
           </span>
           <span class="case-desc">Réanimation, USC, USIC, urgences.</span>
-          <span class="case-lien">Explorer →</span>
         </button>
         <button class="case-domaine" data-cible="hospitalisation" type="button">
           <span class="case-entete">
-            <span class="case-icone" aria-hidden="true">🏥</span>
+            <span class="case-icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17"/><path d="M9 8h1M14 8h1M9 12h1M14 12h1M9 16h1M14 16h1"/></svg>
+            </span>
             <span class="case-titre">Hospitalisation</span>
           </span>
           <span class="case-desc">Médecine, chirurgie, oncologie, SSR.</span>
-          <span class="case-lien">Découvrir →</span>
         </button>
         <button class="case-domaine" data-cible="proximite" type="button">
           <span class="case-entete">
-            <span class="case-icone" aria-hidden="true">🏡</span>
+            <span class="case-icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11L12 4l8 7"/><path d="M6 10v10h12V10"/></svg>
+            </span>
             <span class="case-titre">Proximité</span>
           </span>
           <span class="case-desc">Domicile, rural, gériatrie.</span>
-          <span class="case-lien">Voir →</span>
         </button>
       </div>
     </div>
   </div>
 
   <div class="chiffres">
-    <div><b data-cible="8">0</b><span>ans d'exercice infirmier</span></div>
-    <div><b data-cible="2">0</b><span>ans en réanimation, dont le Covid</span></div>
-    <div><b data-cible="3">0</b><span>modes d'exercice : hôpital, libéral, médico-social</span></div>
-    <div><b data-cible="18">0</b><span>établissements depuis 2018</span></div>
+    <div><b data-cible="8">8</b><span>ans d'exercice infirmier</span></div>
+    <div><b data-cible="2">2</b><span>ans en réanimation, dont le Covid</span></div>
+    <div><b data-cible="3">3</b><span>modes d'exercice : hôpital, libéral, médico-social</span></div>
+    <div><b data-cible="18">18</b><span>établissements depuis 2018</span></div>
   </div>
 
-  <details class="section-pliable" id="profil">
+  <details class="section-pliable" id="profil" open>
     <summary class="section-entete">
       <h2 class="titre">Profil</h2>
       <span class="signe"></span>
@@ -117,9 +125,11 @@
 
         <div class="profil-carte">
           <h3>Savoir-faire</h3>
-          <p style="margin-bottom:8px;"><b style="color:var(--nuit);">Autonomie</b> — tournée libérale complète,
+          <p class="savoir-ligne"><b class="savoir-label">Technique</b> — réanimation, pansements complexes,
+          perfusions et PAC, hématologie-oncologie, soins palliatifs.</p>
+          <p class="savoir-ligne"><b class="savoir-label">Autonomie</b> — tournée libérale complète,
           facturation et télétransmission selon les cabinets, coordination ville-hôpital.</p>
-          <p style="margin-bottom:8px;"><b style="color:var(--nuit);">Relationnel</b> — publics vulnérables,
+          <p class="savoir-ligne"><b class="savoir-label">Relationnel</b> — publics vulnérables,
           médiation, accompagnement des aidants.</p>
           <div class="tags">
             <span>Agathe YOU</span><span>Expert Santé</span><span>HM</span><span>Osiris</span><span>Mobisoins</span><span>Hublo</span>
@@ -138,7 +148,7 @@
           <h3>Disponibilité</h3>
           <p>Immédiate pour des remplacements ponctuels et des missions.<br>
           Installation en Creuse à partir de l'automne 2026.</p>
-          <div class="tags" style="margin-top:10px;">
+          <div class="tags tags-espacees">
             <span>Guéret</span><span>Boussac</span><span>Genouillac</span><span>Aubusson</span>
           </div>
         </div>
@@ -147,7 +157,7 @@
     </div>
   </details>
 
-  <details class="section-pliable" id="parcours">
+  <details class="section-pliable" id="parcours" open>
     <summary class="section-entete">
       <h2 class="titre">Parcours</h2>
       <span class="signe"></span>
@@ -414,7 +424,7 @@
 <footer class="site">
   <div class="footer-inner">
     <div>
-      <b>Bastien Rouger</b> — Infirmier D.E., D.E. décembre 2016<br>
+      <b>Bastien Rouger</b> — Infirmier D.E., diplômé décembre 2016<br>
       <a href="tel:+33698433360">06 98 43 33 60</a> ·
       <a href="mailto:bastien.rouger@gmail.com?subject=Contact%20depuis%20le%20site&body=Bonjour%20Bastien%2C%0D%0A%0D%0A">bastien.rouger@gmail.com</a>
     </div>
@@ -426,23 +436,27 @@
 
 <script>
 (function(){
+  var svgPouls = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l1.8-4.5L11 18l2.2-10L15 12h7"/></svg>';
+  var svgBatiment = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17"/><path d="M9 8h1M14 8h1M9 12h1M14 12h1M9 16h1M14 16h1"/></svg>';
+  var svgMaison = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11L12 4l8 7"/><path d="M6 10v10h12V10"/></svg>';
+
   var domaines = {
     critiques: {
-      icone: '🫀',
+      icone: svgPouls,
       titre: 'Soins critiques',
-      texte: "Réanimation, USC, USIC, urgences. Pratiqué à la Clinique du Millénaire dès 2019 — poste fixe pendant le Covid — et dans une dizaine d'établissements en intérim.",
+      texte: "Réanimation, USC, USIC, urgences. Pratiqué à la Clinique du Millénaire dès 2019, poste fixe pendant le Covid, et dans une dizaine d'établissements en intérim.",
       tags: ['Réanimation','USC','USIC','Urgences'],
       position: '8%'
     },
     hospitalisation: {
-      icone: '🏥',
+      icone: svgBatiment,
       titre: 'Hospitalisation',
-      texte: "Médecine, chirurgie, pneumologie, oncologie, SSR onco-hématologique. De Montluçon au CHU de Montpellier, en passant par l'ICM et le Mas du Rochet.",
-      tags: ['Médecine','Chirurgie','Pneumologie','Oncologie','SSR onco-hémato'],
+      texte: "Médecine, chirurgie, oncologie, SSR. De Montluçon au CHU de Montpellier, en passant par l'ICM et le Mas du Rochet, en hématologie et soins palliatifs.",
+      tags: ['Médecine','Chirurgie','Oncologie','SSR'],
       position: '50%'
     },
     proximite: {
-      icone: '🏡',
+      icone: svgMaison,
       titre: 'Proximité',
       texte: "Domicile, rural, gériatrie, médico-social. Cinq cabinets libéraux dans le Gard depuis 2025, le dispositif PIMAS, et les débuts en gériatrie au CHU de Nantes.",
       tags: ['Domicile','Rural','Gériatrie','Médico-social'],
@@ -460,7 +474,7 @@
   function selectionner(cle){
     var d = domaines[cle];
     if(!d) return;
-    elIcone.textContent = d.icone;
+    elIcone.innerHTML = d.icone;
     elTitre.textContent = d.titre;
     elTexte.textContent = d.texte;
     elTags.innerHTML = '';
