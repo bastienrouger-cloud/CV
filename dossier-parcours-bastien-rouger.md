@@ -350,6 +350,62 @@ teintes (ex. `rgba(19,41,61,…)` = `--fonce` en rgb, `rgba(201,173,128,…)` =
 écran) utilise un brun-sable `#8C6B3D` à la place de l'accent pour rester
 lisible sur fond clair.
 
+**QR code vers le site (1er août 2026).** Ajouté dans la colonne sombre du CV
+imprimable, juste sous le bloc Contact — bloc `.qr-bloc`, lien
+`https://bastienrouger-cloud.github.io/CV/`. Détails techniques :
+- QR généré en local (lib Python `qrcode`, SVG vectoriel intégré inline dans
+  le HTML — pas d'image externe, pas de dépendance réseau à l'ouverture).
+  Modules en `#13293D` sur fond blanc plein (carte blanche dédiée), pour un
+  contraste de scan maximal — le bleu foncé est aussi lisible qu'un noir pur
+  pour un lecteur de QR.
+- Toute la carte (QR + légende « Le site / Cliquable ici · scannable au
+  téléphone ») est un unique `<a href="...">`. Objectif double : le
+  téléphone scanne le QR sur le papier, ET le lien reste cliquable une fois
+  le CV exporté en PDF (Chrome conserve les `<a href>` de la page comme
+  liens cliquables dans le PDF généré via *Enregistrer en PDF* à
+  l'impression — c'est le mécanisme utilisé ici plutôt qu'une solution
+  d'annotation PDF séparée).
+- Régénérer le SVG si l'URL change un jour : script Python avec
+  `qrcode.image.svg.SvgPathImage`, voir historique de session pour la
+  commande exacte.
+- Légende retouchée le 1er août 2026, puis re-corrigée le même jour après
+  relecture critique : « CV complet » sous-entendait que le papier tenu en
+  main est une version incomplète — dévalorise le document au moment où il
+  est lu. Et « Cliquable ici » est faux sur papier (un QR se scanne, il ne
+  se clique pas). Version finale, qui annonce le bénéfice concret plutôt que
+  le manque, et qui reste vraie sur les deux supports :
+  **« Les 18 établissements, service par service »** /
+  *« À scanner — cliquable à l'écran »* (scanner en premier, le clic
+  qualifié « à l'écran » pour ne pas mentir sur le papier tout en gardant
+  l'indication utile pour la lecture PDF — cliquer sur un QR n'est pas encore
+  un réflexe naturel, contrairement au scan).
+- Taille réduite le 1er août 2026 : fonctionnait comme CTA mais jugé trop
+  imposant/pas assez sobre pour le reste de la colonne (seul bloc encadré du
+  flanc). QR ramené de 15mm à 12,5mm (encore confortable à scanner tenu en
+  main), padding et police du texte resserrés (`.qr-texte` 6.8pt→5.9pt,
+  `.qr-texte b` 7.6pt→6.5pt). Toujours 1 page.
+
+**Colonne dates du Parcours trop serrée contre le texte (1er août 2026),
+CV imprimable.** Visible surtout sur la ligne « 2025 → AUJOURD'HUI »
+(le mot « AUJOURD'HUI » remplissait quasiment toute la largeur de la colonne
+de 66px). Corrigé : `.poste` passe de `grid-template-columns:66px 1fr; gap:10px;`
+à `78px 1fr; gap:14px;` (aussi répercuté dans la media query print). Toujours
+1 page.
+
+**Vérification (1er août 2026).** Pas d'accès à un vrai Chrome dans mon
+environnement (extension Claude in Chrome présente mais bloquée sur les URL
+`file://` en local — pas la permission « Autoriser l'accès aux URL de
+fichiers »). Vérification faite via un rendu HTML→PDF alternatif
+(WeasyPrint, en local, sans réseau) : la page tient bien sur 1 page, le QR a
+une structure valide (repéré visuellement, pas décodé faute de lib zbar
+disponible), la pastille SSR onco-hémato est bien absente. Limite connue de
+cet outil : son moteur SVG/flexbox est plus faible que Chrome — les icônes
+de zone (`.zone h3` en `flex`) apparaissaient mal alignées et en noir plutôt
+qu'en sable dans ce rendu de test, alors que la même technique fonctionne
+déjà correctement sur le site (confirmé par capture d'écran réelle). Probable
+artefact de l'outil de test, pas un bug réel, mais **à confirmer par un vrai
+« Aperçu avant impression » Chrome** avant de considérer le sujet clos.
+
 **Contraste colonne sombre / colonne claire sur le CV imprimable (1er août
 2026).** Jugé trop violent après le passage au bleu. Sans toucher aux couleurs
 (déjà validées sur le site), deux ajustements côté mise en forme uniquement :
