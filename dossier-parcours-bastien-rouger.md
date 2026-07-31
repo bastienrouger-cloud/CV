@@ -221,6 +221,34 @@ Deux implémentations distinctes à ne pas confondre :
 - **Chapo au-dessus de « Terrains d'exercice »** — classe `.chapo-pleine`
   (`max-width:none`) pour occuper toute la largeur du panneau en dessous, au
   lieu du `max-width:640px` par défaut de `.chapo` (gardé ailleurs sur la page).
+- **Audit largeur des textes (1er août 2026).** Même correction appliquée au
+  chapo sous « Détail complet » (avait le même défaut : texte étriqué à 640px
+  au-dessus des accordéons pleine largeur). Et à `.note` (les deux légendes
+  sous les tableaux « 18 établissements » / « 5 cabinets ») : max-width:640px
+  retiré, plus aucune raison de le garder puisque le tableau au-dessus est
+  pleine largeur.
+- **`.accroche` passé pleine largeur aussi (1er août 2026).** D'abord laissé
+  à 760px (choix de lisibilité), mais Bastien a demandé de l'aligner sur le
+  bandeau mobilité au-dessus, qui lui est pleine largeur. `max-width` retiré.
+  Pour éviter l'effet « mur de texte » à cette largeur : ajout d'une lettrine
+  (`::first-letter`, grande capitale en Georgia, couleur `--fonce`) plutôt que
+  de garder le texte étriqué — touche éditoriale demandée explicitement
+  (« fantaisie » ou italique, au choix, tant que la largeur est corrigée).
+  Taille du texte remontée à 17.5px / line-height 1.6 pour rester lisible sur
+  des lignes plus longues.
+- **Lettrine corrigée (1er août 2026) — même chose appliquée sur le CV
+  imprimable.** Première version en `::first-letter` flottant (`float:left`)
+  sur 2-3 lignes, comme une vraie lettrine de magazine. En la testant (rendu
+  WeasyPrint) sur les deux documents, le début du mot passait sous la lettre
+  géante (« H»uit » devenait illisible, le "uit" caché derrière le H). Reproduit
+  à l'identique sur le site ET le CV, donc pas un hasard — limite de ce moteur
+  de rendu avec `::first-letter` + `float`, floue sur le vrai comportement dans
+  Chrome. Plutôt que de parier là-dessus sur un document qui part à
+  l'impression, **remplacé par une version sans float** : la première lettre
+  juste agrandie et colorée en ligne (`font-size:1.5-1.55em`, pas de `float`,
+  pas de `line-height`/`padding` custom). Moins spectaculaire qu'une vraie
+  lettrine à cheval sur plusieurs lignes, mais zéro risque de rendu cassé,
+  sur les deux fichiers.
 
 - **Soins critiques** — Réanimation, réa cardiaque, USC, USIC, urgences
 - **Hospitalisation** — Médecine, chirurgie, pneumologie, oncologie, SSR onco-hémato

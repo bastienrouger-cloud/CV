@@ -106,8 +106,12 @@ main.page-corps{ max-width:1140px; margin:0 auto; padding:34px 24px 60px; }
 /* ---------------- Accroche ---------------- */
 .accroche{
   font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
-  font-size:16.5px; line-height:1.55; color:#232C36; margin-bottom:28px;
-  max-width:760px;
+  font-size:17.5px; line-height:1.6; color:#232C36; margin-bottom:28px;
+}
+.accroche::first-letter{
+  font-size:1.55em;
+  font-weight:700;
+  color:var(--fonce);
 }
 
 /* ---------------- Titres de section ---------------- */
@@ -305,7 +309,7 @@ table.tableau tr:last-child td{ border-bottom:0; }
 table.tableau td.fort{ font-weight:700; color:var(--fonce); }
 
 .note{
-  font-size:13px; color:var(--sourd); font-style:italic; margin:10px 0 24px; max-width:640px;
+  font-size:13px; color:var(--sourd); font-style:italic; margin:10px 0 24px;
 }
 
 /* ---------------- Chronologie détaillée ---------------- */
