@@ -3,7 +3,7 @@
 Document de travail. Rassemble tout ce qui a servi à construire le CV, pour reprise
 en session Cowork (site perso / portfolio).
 
-Dernière mise à jour : 29 juillet 2026.
+Dernière mise à jour : 31 juillet 2026.
 
 ---
 
@@ -199,9 +199,28 @@ complète.*
 
 ### Capsule « Terrains d'exercice »
 
-Élément graphique signature : une capsule arrondie en dégradé continu, du vert
-(soins critiques) au sable (proximité). Le dégradé *est* le propos — il n'y a pas
-trois cases séparées mais un continuum, couvert de bout en bout.
+Élément graphique signature : une capsule/panneau en dégradé continu, du bleu
+marine profond (soins critiques) au sable (proximité) — plus de vert depuis le
+changement de palette (voir section 10). Le dégradé *est* le propos — il n'y a
+pas trois cases séparées mais un continuum, couvert de bout en bout.
+
+Deux implémentations distinctes à ne pas confondre :
+- **CV imprimable** — capsule statique à 3 colonnes égales (`.capsule`).
+  Alignée sur le site (1er août 2026) : icône devant chaque titre de zone
+  (mêmes SVG que le site — pouls, bâtiment, maison), et la pastille
+  « SSR onco-hémato » retirée de la zone Hospitalisation (jugée redondante/trop
+  précise pour une pastille).
+- **Site (`index.html`)** — panneau interactif `.panneau-terrains` : à gauche
+  un résumé qui change au survol/clic (icône alignée avec le titre, texte,
+  pastilles centrées sous le texte), à droite une jauge de dégradé + 3 cartes
+  cliquables (`.cases-domaine`) verticalement centrées sur la hauteur du
+  panneau de gauche. Hauteur du panneau réduite à 250px (230px en mobile) pour
+  rester compact. Textes de résumé volontairement courts (1-2 phrases) pour
+  ne jamais être coupés par le `-webkit-line-clamp:3` — attention si on les
+  rallonge, le panneau ne grandit pas.
+- **Chapo au-dessus de « Terrains d'exercice »** — classe `.chapo-pleine`
+  (`max-width:none`) pour occuper toute la largeur du panneau en dessous, au
+  lieu du `max-width:640px` par défaut de `.chapo` (gardé ailleurs sur la page).
 
 - **Soins critiques** — Réanimation, réa cardiaque, USC, USIC, urgences
 - **Hospitalisation** — Médecine, chirurgie, pneumologie, oncologie, SSR onco-hémato
@@ -272,8 +291,15 @@ Trois approximations rattrapées, à surveiller pour toute nouvelle version :
   l'a voulu à demeure, il est resté deux ans. Ne pas soulever le sujet si personne
   ne le pose.
 
-- **Coordonnées sur un site public** : mettre un formulaire ou une adresse dédiée
-  plutôt que le mail personnel et le portable en clair.
+- **Coordonnées sur un site public — tranché, footer supprimé.** Aucune
+  coordonnée en clair sur le site (ni téléphone ni mail affiché). Le footer a
+  été retiré entièrement. Le RPPS est affiché dans le header (sous l'accroche
+  métier) — ce n'est pas une coordonnée de contact, pas de souci à l'afficher.
+  Seul point de contact : le bouton « Me contacter » (mailto), présent dans un
+  bandeau de nav sticky sous le header (desktop) et dans une barre fixe en bas
+  d'écran (mobile — voir section 11). Le CV imprimable garde ses coordonnées
+  complètes (téléphone, mail, RPPS) puisqu'il est destiné à être
+  téléchargé/imprimé, pas exposé publiquement de la même façon.
 
 ---
 
@@ -294,19 +320,47 @@ Plus aucun trou dans le CV.
 
 ## 10. Système visuel
 
-Variables CSS du CV, à reprendre telles quelles sur le site pour que les deux
-documents se répondent.
+**Changement de palette (31 juillet 2026).** L'ancien vert + doré (« --nuit »
+/ « --laiton ») faisait un contraste jugé trop violent. Nouvelle direction :
+bleu profond quasi monochrome, avec le sable comme seule vraie touche chaude
+(doré très discret, presque absent). Objectif inchangé : moderne, premium,
+pas 100 % minimaliste, dans les codes du paramédical.
+
+Variables CSS communes à `style.css` (site) et `cv-bastien-rouger-premium_1.html`
+(CV imprimable) — mêmes noms, mêmes valeurs dans les deux fichiers, pour que les
+deux documents se répondent. Noms de variables neutres (plus liés à une couleur
+précise) pour survivre à un futur changement de palette.
 
 ```css
---encre:       #22201C;  /* texte principal, noir chaud */
---pin:         #2C6353;  /* vert profond : métier, dates, chiffres */
---miel:        #B8792C;  /* accent chaud : titres de section, mise en avant */
---sable:       #EDE9DF;  /* fond de la colonne latérale */
---sable-fonce: #DCD5C5;  /* filets et bordures */
---sourd:       #6B655B;  /* texte secondaire */
---papier:      #FFFDF9;  /* fond de page, crème très clair */
---surligne:    #FDE9A8;  /* placeholders, écran uniquement */
+--fonce:        #13293D;  /* bleu marine profond : header, bandeau nav, capsule */
+--fonce-clair:  #1F3E58;  /* variante claire pour les dégradés */
+--accent:       #C9AD80;  /* sable/doré discret : titres de section, mise en avant */
+--accent-clair: #E4D6BB;  /* accent clair : hover, prénom en emphase */
+--clair:        #EDF2F5;  /* texte clair sur fond sombre */
+--clair-sourd:  #9FB4C4;  /* texte clair secondaire sur fond sombre */
+--papier:       #FCFAF7;  /* fond de page, crème très clair (inchangé) */
+--encre:        #1B2430;  /* texte principal, bleu-noir */
+--sourd:        #64707A;  /* texte secondaire */
+--filet:        #DEE3E6;  /* filets et bordures */
 ```
+
+Les ombres (`box-shadow`) et gradients codés en dur ont été recalés sur ces
+teintes (ex. `rgba(19,41,61,…)` = `--fonce` en rgb, `rgba(201,173,128,…)` =
+`--accent` en rgb). Sur le CV imprimable, le mode « encre légère » (bascule
+écran) utilise un brun-sable `#8C6B3D` à la place de l'accent pour rester
+lisible sur fond clair.
+
+**Contraste colonne sombre / colonne claire sur le CV imprimable (1er août
+2026).** Jugé trop violent après le passage au bleu. Sans toucher aux couleurs
+(déjà validées sur le site), deux ajustements côté mise en forme uniquement :
+dégradé du `.flanc` aplati (2 arrêts au lieu de 3, plus de palier quasi-noir
+en bas), et un `box-shadow` doux qui adoucit la jonction entre les deux
+colonnes. **Non vérifié visuellement** (impossible de générer une capture
+dans cette session — sandbox sans navigateur installable, réseau bloqué pour
+les dépendances système). À rouvrir et juger à l'œil ; si ce n'est pas assez,
+pistes possibles : aplatir encore plus, ajouter un léger dégradé de transition
+entre les deux colonnes, ou revoir l'accent utilisé en grande masse sur le
+flanc (dt, h2).
 
 **Typographie**
 - Titres, nom, accroche, chiffres : `Georgia, "Iowan Old Style", "Times New Roman", serif`
@@ -314,12 +368,14 @@ documents se répondent.
 - Le mélange serif / sans donne la chaleur sans sacrifier la lisibilité rapide.
 
 **Principes de mise en page**
-- Une seule forme expressive (la capsule). Tout le reste sobre, pour qu'elle porte seule.
-- Colonne latérale teintée pleine hauteur, colonne principale sur papier crème.
+- Une seule forme expressive (la capsule / le panneau « Terrains d'exercice »).
+  Tout le reste sobre, pour qu'elle porte seule.
+- Colonne latérale teintée pleine hauteur (CV) / bandeau sombre (site), reste
+  du contenu sur papier crème.
 - Rail chronologique à gauche du parcours : les dates alignées en colonne, pour que
   les chevauchements se lisent d'un coup d'œil.
-- Variable `--echelle` en tête du CSS (8.7pt) : seul levier à toucher pour faire
-  tenir la page A4.
+- Variable `--echelle` en tête du CSS du CV (8.3pt) : seul levier à toucher pour
+  faire tenir la page A4.
 
 ---
 
@@ -327,10 +383,17 @@ documents se répondent.
 
 Deux dépôts séparés, aucun mélange avec Humming Cob.
 
-- **`/`** — le CV en ligne. Même contenu, même palette, responsive.
-- **`/parcours`** — le détail que le PDF ne peut pas contenir : les 18 établissements
-  service par service, les techniques par spécialité, ce qui a été appris sur chaque
-  poste, le CDD PIMAS à 40 %, Hublo.
+- **`/` — page unique, tranché.** Plus de page `/parcours` séparée : tout le
+  détail (chronologie complète, 18 établissements, 5 cabinets) reste sur `index.html`,
+  dans les menus déroulants (`<details>`) déjà en place. Même contenu, même
+  palette, responsive.
+- **Navigation — pas de footer.** Header : identité + métier + RPPS uniquement.
+  Juste en dessous, un bandeau `.bandeau-nav` (nav + bouton contact) en
+  `position:sticky` : il reste à sa place initiale puis se colle en haut au
+  scroll. En mobile (<680px), le bouton contact disparaît du bandeau et devient
+  une barre fixe (`.contact-mobile`) collée en bas de l'écran, toujours visible.
+  Footer entièrement supprimé (plus de téléphone/mail en clair nulle part sur
+  le site, cf. section 8).
 - **`/web`** — plus tard : Humming Cob, l'outil de compatibilité génétique
   (coefficient de consanguinité Wright/Henderson), le client vétérinaire, VK Studio.
 

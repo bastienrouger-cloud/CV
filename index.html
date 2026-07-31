@@ -18,18 +18,22 @@
     <div class="identite">
       <p class="nom">Bastien <em>Rouger</em></p>
       <p class="metier">Infirmier D.E. — de la réanimation au soin à domicile</p>
-    </div>
-    <div class="site-actions">
-      <nav class="principale">
-        <a href="#terrains">Terrains d'exercice</a>
-        <a href="#profil">Profil</a>
-        <a href="#parcours">Parcours</a>
-        <a href="#detail">Détail complet</a>
-      </nav>
-      <a class="bouton-contact" href="mailto:bastien.rouger@gmail.com?subject=Contact%20depuis%20le%20site&body=Bonjour%20Bastien%2C%0D%0A%0D%0A">Me contacter</a>
+      <p class="rpps">RPPS 10103462106</p>
     </div>
   </div>
 </header>
+
+<div class="bandeau-nav">
+  <div class="bandeau-inner">
+    <nav class="principale">
+      <a href="#terrains">Terrains d'exercice</a>
+      <a href="#profil">Profil</a>
+      <a href="#parcours">Parcours</a>
+      <a href="#detail">Détail complet</a>
+    </nav>
+    <a class="bouton-contact bandeau-contact" href="mailto:bastien.rouger@gmail.com?subject=Contact%20depuis%20le%20site&body=Bonjour%20Bastien%2C%0D%0A%0D%0A">Me contacter</a>
+  </div>
+</div>
 
 <main class="page-corps">
 
@@ -47,17 +51,19 @@
   </p>
 
   <h2 class="titre" id="terrains">Terrains d'exercice</h2>
-  <p class="chapo">Un seul et même infirmier, du patient intubé au patient en rupture de soins. Le détail complet est plus bas.</p>
+  <p class="chapo chapo-pleine">Un seul et même infirmier, du patient intubé au patient en rupture de soins. Le détail complet est plus bas.</p>
 
   <div class="panneau-terrains">
     <div class="panneau-resume">
       <div class="resume-contenu">
-        <span class="resume-icone" id="resume-icone" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l1.8-4.5L11 18l2.2-10L15 12h7"/></svg>
-        </span>
-        <h3 class="resume-titre" id="resume-titre">Soins critiques</h3>
-        <p class="resume-texte" id="resume-texte">Réanimation, USC, USIC, urgences. Pratiqué à la Clinique du
-        Millénaire dès 2019, poste fixe pendant le Covid, et dans une dizaine d'établissements en intérim.</p>
+        <div class="resume-entete">
+          <span class="resume-icone" id="resume-icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l1.8-4.5L11 18l2.2-10L15 12h7"/></svg>
+          </span>
+          <h3 class="resume-titre" id="resume-titre">Soins critiques</h3>
+        </div>
+        <p class="resume-texte" id="resume-texte">Réanimation, USC, USIC, urgences. Deux ans à la Clinique du
+        Millénaire pendant le Covid, poste fixe en réanimation.</p>
         <div class="puces" id="resume-tags">
           <span>Réanimation</span><span>USC</span><span>USIC</span><span>Urgences</span>
         </div>
@@ -421,18 +427,7 @@
 
 </main>
 
-<footer class="site">
-  <div class="footer-inner">
-    <div>
-      <b>Bastien Rouger</b> — Infirmier D.E., diplômé décembre 2016<br>
-      <a href="tel:+33698433360">06 98 43 33 60</a> ·
-      <a href="mailto:bastien.rouger@gmail.com?subject=Contact%20depuis%20le%20site&body=Bonjour%20Bastien%2C%0D%0A%0D%0A">bastien.rouger@gmail.com</a>
-    </div>
-    <div>
-      Permis B — véhiculé · RPPS 10103462106
-    </div>
-  </div>
-</footer>
+<a class="contact-mobile" href="mailto:bastien.rouger@gmail.com?subject=Contact%20depuis%20le%20site&body=Bonjour%20Bastien%2C%0D%0A%0D%0A">Me contacter</a>
 
 <script>
 (function(){
@@ -444,21 +439,21 @@
     critiques: {
       icone: svgPouls,
       titre: 'Soins critiques',
-      texte: "Réanimation, USC, USIC, urgences. Pratiqué à la Clinique du Millénaire dès 2019, poste fixe pendant le Covid, et dans une dizaine d'établissements en intérim.",
+      texte: "Réanimation, USC, USIC, urgences. Deux ans à la Clinique du Millénaire pendant le Covid, poste fixe en réanimation.",
       tags: ['Réanimation','USC','USIC','Urgences'],
       position: '8%'
     },
     hospitalisation: {
       icone: svgBatiment,
       titre: 'Hospitalisation',
-      texte: "Médecine, chirurgie, oncologie, SSR. De Montluçon au CHU de Montpellier, en passant par l'ICM et le Mas du Rochet, en hématologie et soins palliatifs.",
+      texte: "Médecine, chirurgie, oncologie, SSR. Du CHU de Montpellier au Mas du Rochet, en oncologie et soins palliatifs.",
       tags: ['Médecine','Chirurgie','Oncologie','SSR'],
       position: '50%'
     },
     proximite: {
       icone: svgMaison,
       titre: 'Proximité',
-      texte: "Domicile, rural, gériatrie, médico-social. Cinq cabinets libéraux dans le Gard depuis 2025, le dispositif PIMAS, et les débuts en gériatrie au CHU de Nantes.",
+      texte: "Domicile, rural, gériatrie, médico-social. Cinq cabinets libéraux dans le Gard depuis 2025.",
       tags: ['Domicile','Rural','Gériatrie','Médico-social'],
       position: '92%'
     }

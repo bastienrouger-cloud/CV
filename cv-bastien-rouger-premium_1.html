@@ -9,16 +9,16 @@
     /* Si ça déborde en page 2 : baisser cette valeur */
     --echelle:8.3pt;
 
-    --nuit:#12302A;        /* colonne latérale, vert nuit */
-    --nuit-clair:#1C463C;  /* dégradés et cartes sombres */
-    --laiton:#C79A3E;      /* accent principal */
-    --laiton-clair:#E4C685;
-    --craie:#EEF3F0;       /* texte sur fond sombre */
-    --craie-sourd:#9CB2A8;
+    --fonce:#13293D;        /* colonne latérale, vert nuit */
+    --fonce-clair:#1F3E58;  /* dégradés et cartes sombres */
+    --accent:#C9AD80;      /* accent principal */
+    --accent-clair:#E4D6BB;
+    --clair:#EDF2F5;       /* texte sur fond sombre */
+    --clair-sourd:#9FB4C4;
     --papier:#FCFAF7;
-    --encre:#1A211E;
-    --sourd:#6A7370;
-    --filet:#E2DCD1;
+    --encre:#1B2430;
+    --sourd:#64707A;
+    --filet:#DEE3E6;
   }
 
   @page { size:A4; margin:0; }
@@ -31,13 +31,13 @@
   }
 
   .barre{
-    padding:9px 14px; background:var(--nuit); color:var(--craie);
+    padding:9px 14px; background:var(--fonce); color:var(--clair);
     font-size:12px; text-align:center;
   }
   .barre button{
     font:inherit; font-size:11px; margin-left:10px; padding:3px 10px; cursor:pointer;
-    background:transparent; color:var(--laiton-clair);
-    border:1px solid rgba(199,154,62,.55); border-radius:3px;
+    background:transparent; color:var(--accent-clair);
+    border:1px solid rgba(201,173,128,.55); border-radius:3px;
   }
 
   .page{
@@ -50,15 +50,16 @@
 
   /* ================= COLONNE SOMBRE ================= */
   .flanc{
-    background:linear-gradient(168deg,var(--nuit-clair) 0%,var(--nuit) 46%,#0C231E 100%);
-    color:var(--craie);
+    background:linear-gradient(168deg,var(--fonce-clair) 0%,var(--fonce) 100%);
+    color:var(--clair);
     padding:11mm 7mm 8mm;
     position:relative;
+    box-shadow:10px 0 22px -10px rgba(19,41,61,.35);
   }
-  /* liseré laiton sur la tranche */
+  /* liseré sable sur la tranche, adouci */
   .flanc::after{
-    content:""; position:absolute; top:0; right:0; width:2px; height:100%;
-    background:linear-gradient(180deg,var(--laiton) 0%,rgba(199,154,62,.15) 70%,transparent 100%);
+    content:""; position:absolute; top:0; right:0; width:1px; height:100%;
+    background:linear-gradient(180deg,rgba(201,173,128,.55) 0%,rgba(201,173,128,.12) 70%,transparent 100%);
   }
 
   .nom{
@@ -66,69 +67,69 @@
     font-size:20pt; font-weight:400; line-height:1.05; letter-spacing:-.3px; color:#fff;
     white-space:nowrap;
   }
-  .nom em{ font-style:normal; font-weight:700; color:var(--laiton-clair); }
+  .nom em{ font-style:normal; font-weight:700; color:var(--accent-clair); }
   .metier{
     margin-top:7px; padding-top:7px;
-    border-top:1px solid rgba(199,154,62,.5);
-    font-size:8.2pt; font-weight:600; color:var(--craie-sourd); letter-spacing:.1px;
+    border-top:1px solid rgba(201,173,128,.5);
+    font-size:8.2pt; font-weight:600; color:var(--clair-sourd); letter-spacing:.1px;
   }
 
   .flanc h2{
     margin:10px 0 4px; padding-left:11px; position:relative;
     font-size:7.1pt; font-weight:700; letter-spacing:1.8px; text-transform:uppercase;
-    color:var(--laiton);
+    color:var(--accent);
   }
   .flanc h2::before{
     content:""; position:absolute; left:0; top:.42em;
-    width:6px; height:6px; background:var(--laiton); transform:rotate(45deg);
+    width:6px; height:6px; background:var(--accent); transform:rotate(45deg);
   }
 
-  .coord{ list-style:none; font-size:8.3pt; color:var(--craie); }
+  .coord{ list-style:none; font-size:8.3pt; color:var(--clair); }
   .coord li{ margin-bottom:2px; }
   .coord li b{ font-size:10.4pt; color:#fff; letter-spacing:.3px; }
 
   .flanc dl dt{
-    font-weight:700; color:var(--laiton-clair); font-size:7.9pt; margin-top:4px;
+    font-weight:700; color:var(--accent-clair); font-size:7.9pt; margin-top:4px;
     letter-spacing:.3px;
   }
   .flanc dl dt:first-child{ margin-top:0; }
-  .flanc dl dd{ font-size:8.1pt; color:var(--craie); opacity:.92; }
+  .flanc dl dd{ font-size:8.1pt; color:var(--clair); opacity:.92; }
 
-  .dispo{ font-size:8.2pt; color:var(--craie); line-height:1.42; }
-  .dispo b{ color:var(--laiton-clair); font-weight:700; }
+  .dispo{ font-size:8.2pt; color:var(--clair); line-height:1.42; }
+  .dispo b{ color:var(--accent-clair); font-weight:700; }
 
   .horizon{
     position:absolute; left:0; right:0; bottom:0;
     width:100%; height:19mm; display:block;
   }
-  body.encre-legere .horizon path{ fill:#8A6520; }
+  body.encre-legere .horizon path{ fill:#8C6B3D; }
 
   .diplome{ margin-bottom:4px; font-size:8.3pt; }
   .diplome b{ font-weight:700; color:#fff; }
-  .diplome span{ display:block; color:var(--craie-sourd); font-size:7.8pt; line-height:1.28; }
+  .diplome span{ display:block; color:var(--clair-sourd); font-size:7.8pt; line-height:1.28; }
 
   /* ================= COLONNE CLAIRE ================= */
   .corps{ padding:10mm 8.5mm 7mm 8mm; }
 
   .mobilite{
     padding:6px 11px; border-radius:4px;
-    background:#fff; border-left:3px solid var(--laiton);
-    box-shadow:0 2px 8px rgba(18,48,42,.10);
+    background:#fff; border-left:3px solid var(--accent);
+    box-shadow:0 2px 8px rgba(19,41,61,.10);
     font-size:8.4pt;
   }
-  .mobilite strong{ color:var(--nuit); }
+  .mobilite strong{ color:var(--fonce); }
 
   .accroche{
     margin-top:9px;
     font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
-    font-size:9.2pt; line-height:1.38; color:#2A322E;
+    font-size:9.2pt; line-height:1.38; color:#232C36;
   }
 
   .corps h2{
     margin:9px 0 5px; padding-bottom:3px;
     font-size:7.1pt; font-weight:700; letter-spacing:1.8px; text-transform:uppercase;
-    color:var(--nuit);
-    border-bottom:2px solid var(--laiton);
+    color:var(--fonce);
+    border-bottom:2px solid var(--accent);
     display:inline-block; padding-right:18px;
   }
 
@@ -136,18 +137,21 @@
   .capsule{
     display:grid; grid-template-columns:repeat(3,1fr);
     border-radius:20px; overflow:hidden;
-    background:linear-gradient(100deg,var(--nuit) 0%,var(--nuit-clair) 55%,#2E3A26 100%);
-    box-shadow:0 5px 16px rgba(18,48,42,.30);
+    background:linear-gradient(100deg,var(--fonce) 0%,var(--fonce-clair) 55%,var(--accent-clair) 100%);
+    box-shadow:0 5px 16px rgba(19,41,61,.30);
   }
   .zone{ padding:8px 11px 9px; }
   .zone + .zone{ border-left:1px solid rgba(238,243,240,.14); }
   .zone h3{
+    display:flex; align-items:center; gap:4px;
     font-size:6.8pt; font-weight:700; letter-spacing:1.1px; text-transform:uppercase;
-    color:var(--laiton-clair); margin-bottom:5px;
+    color:var(--accent-clair); margin-bottom:5px;
   }
+  .zone-icone{ display:inline-flex; width:10px; height:10px; flex:none; }
+  .zone-icone svg{ width:100%; height:100%; }
   .puces{ display:flex; flex-wrap:wrap; gap:3px; }
   .puces span{
-    font-size:7.5pt; color:var(--craie);
+    font-size:7.5pt; color:var(--clair);
     background:rgba(255,255,255,.10);
     border:1px solid rgba(238,243,240,.22);
     border-radius:9px; padding:1px 7px; white-space:nowrap;
@@ -162,13 +166,13 @@
     display:grid; grid-template-columns:repeat(4,1fr); gap:5px; margin-top:7px;
   }
   .chiffres div{
-    background:#fff; border:1px solid var(--filet); border-top:2px solid var(--laiton);
+    background:#fff; border:1px solid var(--filet); border-top:2px solid var(--accent);
     border-radius:4px; padding:6px 5px; text-align:center;
-    box-shadow:0 2px 6px rgba(18,48,42,.09);
+    box-shadow:0 2px 6px rgba(19,41,61,.09);
   }
   .chiffres b{
     display:block; font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
-    font-size:14.5pt; font-weight:700; color:var(--nuit); line-height:1;
+    font-size:14.5pt; font-weight:700; color:var(--fonce); line-height:1;
   }
   .chiffres span{ display:block; margin-top:2px; font-size:6.8pt; color:var(--sourd); line-height:1.18; }
 
@@ -179,40 +183,40 @@
     position:relative;
   }
   .poste:last-child{ border-bottom:0; padding-bottom:0; margin-bottom:0; }
-  .dates{ font-size:7.7pt; font-weight:700; color:var(--nuit); line-height:1.22; padding-top:2px; }
+  .dates{ font-size:7.7pt; font-weight:700; color:var(--fonce); line-height:1.22; padding-top:2px; }
   .dates .encours{
-    display:block; font-weight:700; color:var(--laiton);
+    display:block; font-weight:700; color:var(--accent);
     font-size:7pt; text-transform:uppercase; letter-spacing:.5px;
   }
-  .intitule{ font-size:9.6pt; font-weight:700; color:var(--nuit); }
+  .intitule{ font-size:9.6pt; font-weight:700; color:var(--fonce); }
   .lieu{ font-size:8.2pt; color:var(--sourd); margin-bottom:2px; }
   .poste ul{ list-style:none; }
   .poste li{ padding-left:10px; position:relative; }
   .poste li::before{
     content:""; position:absolute; left:0; top:.5em;
-    width:4px; height:4px; border-radius:50%; background:#C9D2CD;
+    width:4px; height:4px; border-radius:50%; background:#C7D2DA;
   }
-  .poste li.fort{ font-weight:600; color:#232B27; }
-  .poste li.fort::before{ background:var(--laiton); width:5px; height:5px; top:.45em; }
+  .poste li.fort{ font-weight:600; color:#202832; }
+  .poste li.fort::before{ background:var(--accent); width:5px; height:5px; top:.45em; }
   .poste li b{ font-weight:700; }
 
   /* ================= Mode encre légère (écran/impression économe) ================= */
   body.encre-legere .flanc{ background:#EDE9DF; color:var(--encre); }
-  body.encre-legere .flanc::after{ background:var(--laiton); }
+  body.encre-legere .flanc::after{ background:var(--accent); }
   body.encre-legere .nom{ color:var(--encre); }
-  body.encre-legere .nom em{ color:#8A6520; }
+  body.encre-legere .nom em{ color:#8C6B3D; }
   body.encre-legere .metier{ color:var(--sourd); }
   body.encre-legere .coord{ color:var(--encre); }
   body.encre-legere .coord li b{ color:var(--encre); }
-  body.encre-legere .flanc dl dt{ color:#8A6520; }
+  body.encre-legere .flanc dl dt{ color:#8C6B3D; }
   body.encre-legere .flanc dl dd{ color:var(--encre); }
   body.encre-legere .diplome b{ color:var(--encre); }
   body.encre-legere .diplome span{ color:var(--sourd); }
   body.encre-legere .capsule{
-    background:linear-gradient(100deg,#DDE6E2 0%,#EAEFEC 52%,#F5EEE0 100%);
+    background:linear-gradient(100deg,#D9E1E8 0%,#E9EEF0 52%,#F5EEE0 100%);
     box-shadow:none;
   }
-  body.encre-legere .zone h3{ color:#8A6520; }
+  body.encre-legere .zone h3{ color:#8C6B3D; }
   body.encre-legere .zone + .zone{ border-left:1px solid rgba(0,0,0,.10); }
   body.encre-legere .puces span{ color:var(--encre); background:#fff; border-color:rgba(0,0,0,.10); }
 
@@ -296,9 +300,9 @@
     <b>Guéret · Boussac · Genouillac · Aubusson</b></p>
 
     <svg class="horizon" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0 46 V30 C22 22 38 34 58 28 C78 22 92 32 116 26 C140 20 162 30 200 22 V46 Z" fill="var(--laiton)" opacity=".10"/>
-      <path d="M0 46 V36 C26 30 44 40 66 35 C90 29 108 38 132 33 C158 28 176 36 200 31 V46 Z" fill="var(--laiton)" opacity=".16"/>
-      <path d="M0 46 V41 C30 37 52 44 78 40 C104 36 126 43 152 39 C172 36 186 41 200 39 V46 Z" fill="var(--laiton)" opacity=".26"/>
+      <path d="M0 46 V30 C22 22 38 34 58 28 C78 22 92 32 116 26 C140 20 162 30 200 22 V46 Z" fill="var(--accent)" opacity=".10"/>
+      <path d="M0 46 V36 C26 30 44 40 66 35 C90 29 108 38 132 33 C158 28 176 36 200 31 V46 Z" fill="var(--accent)" opacity=".16"/>
+      <path d="M0 46 V41 C30 37 52 44 78 40 C104 36 126 43 152 39 C172 36 186 41 200 39 V46 Z" fill="var(--accent)" opacity=".26"/>
     </svg>
   </aside>
 
@@ -319,15 +323,15 @@
     <h2>Terrains d’exercice</h2>
     <div class="capsule">
       <div class="zone">
-        <h3>Soins critiques</h3>
+        <h3><span class="zone-icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l1.8-4.5L11 18l2.2-10L15 12h7"/></svg></span>Soins critiques</h3>
         <div class="puces"><span>Réanimation</span><span>USC</span><span>USIC</span><span>Urgences</span></div>
       </div>
       <div class="zone">
-        <h3>Hospitalisation</h3>
-        <div class="puces"><span>Médecine</span><span>Chirurgie</span><span>Pneumologie</span><span>Oncologie</span><span>SSR onco-hémato</span></div>
+        <h3><span class="zone-icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17"/><path d="M9 8h1M14 8h1M9 12h1M14 12h1M9 16h1M14 16h1"/></svg></span>Hospitalisation</h3>
+        <div class="puces"><span>Médecine</span><span>Chirurgie</span><span>Pneumologie</span><span>Oncologie</span></div>
       </div>
       <div class="zone">
-        <h3>Proximité</h3>
+        <h3><span class="zone-icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11L12 4l8 7"/><path d="M6 10v10h12V10"/></svg></span>Proximité</h3>
         <div class="puces"><span>Domicile</span><span>Rural</span><span>Gériatrie</span><span>Médico-social</span></div>
       </div>
     </div>
