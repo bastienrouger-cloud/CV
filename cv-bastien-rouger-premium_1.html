@@ -150,6 +150,7 @@
     font-weight:700;
     color:var(--fonce);
   }
+  .accroche strong{ font-weight:700; color:var(--fonce); }
 
   .corps h2{
     margin:9px 0 5px; padding-bottom:3px;
@@ -168,13 +169,13 @@
   }
   .zone{ padding:8px 11px 9px; }
   .zone + .zone{ border-left:1px solid rgba(238,243,240,.14); }
+  .zone-entete{ display:flex; align-items:center; gap:4px; margin-bottom:5px; }
   .zone h3{
-    display:flex; align-items:center; gap:4px;
     font-size:6.8pt; font-weight:700; letter-spacing:1.1px; text-transform:uppercase;
-    color:var(--accent-clair); margin-bottom:5px;
+    color:var(--accent-clair); margin:0;
   }
   .zone-icone{ display:inline-flex; width:10px; height:10px; flex:none; }
-  .zone-icone svg{ width:100%; height:100%; }
+  .zone-icone svg{ width:100%; height:100%; stroke:var(--accent-clair); }
   .puces{ display:flex; flex-wrap:wrap; gap:3px; }
   .puces span{
     font-size:7.5pt; color:var(--clair);
@@ -351,23 +352,23 @@
 
     <p class="accroche">
       Huit ans d’exercice, de la réanimation au domicile. Deux ans en réanimation à la Clinique du Millénaire,
-      dont toute la crise Covid, des vacations dans dix-huit établissements depuis 2018, et aujourd’hui des tournées
-      libérales en autonomie dans des cabinets ruraux. Je m’installe en Creuse et je cherche à y exercer
-      durablement — poste salarié, missions d’intérim ou remplacements en libéral.
+      dont toute la crise Covid, des <strong>vacations</strong> dans dix-huit établissements depuis 2018, et aujourd’hui des <strong>tournées
+      libérales</strong> en autonomie dans des cabinets ruraux. Je m’installe en <strong>Creuse</strong> et je cherche à y exercer
+      <strong>durablement</strong> — poste salarié, missions d’intérim ou remplacements en libéral.
     </p>
 
     <h2>Terrains d’exercice</h2>
     <div class="capsule">
       <div class="zone">
-        <h3><span class="zone-icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l1.8-4.5L11 18l2.2-10L15 12h7"/></svg></span>Soins critiques</h3>
+        <div class="zone-entete"><span class="zone-icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l1.8-4.5L11 18l2.2-10L15 12h7"/></svg></span><h3>Soins critiques</h3></div>
         <div class="puces"><span>Réanimation</span><span>USC</span><span>USIC</span><span>Urgences</span></div>
       </div>
       <div class="zone">
-        <h3><span class="zone-icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17"/><path d="M9 8h1M14 8h1M9 12h1M14 12h1M9 16h1M14 16h1"/></svg></span>Hospitalisation</h3>
+        <div class="zone-entete"><span class="zone-icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17"/><path d="M9 8h1M14 8h1M9 12h1M14 12h1M9 16h1M14 16h1"/></svg></span><h3>Hospitalisation</h3></div>
         <div class="puces"><span>Médecine</span><span>Chirurgie</span><span>Pneumologie</span><span>Oncologie</span></div>
       </div>
       <div class="zone">
-        <h3><span class="zone-icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11L12 4l8 7"/><path d="M6 10v10h12V10"/></svg></span>Proximité</h3>
+        <div class="zone-entete"><span class="zone-icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11L12 4l8 7"/><path d="M6 10v10h12V10"/></svg></span><h3>Proximité</h3></div>
         <div class="puces"><span>Domicile</span><span>Rural</span><span>Gériatrie</span><span>Médico-social</span></div>
       </div>
     </div>

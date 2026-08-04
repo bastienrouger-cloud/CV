@@ -463,6 +463,64 @@ flanc (dt, h2).
 
 ---
 
+## 10 bis. Revue externe (1er août 2026) — web → papier, partagabilité
+
+Revue reçue (probablement un tiers, via Bastien) pointant un vrai manque : le
+QR fait papier → web, mais rien ne fait web → papier. Trois actions :
+
+- **Bouton « Télécharger le CV (PDF) »** ajouté dans le bandeau nav, à côté
+  de « Me contacter ». Style volontairement secondaire (`.bouton-secondaire`,
+  contour, pas de fond) pour ne pas concurrencer le CTA contact. Pointe vers
+  `cv-bastien-rouger.pdf`, à la racine du dépôt à côté d'`index.html` — pas
+  de Drive, l'adresse ne cassera pas.
+  **Action manuelle restante (Bastien) :** exporter le vrai PDF depuis
+  `cv-bastien-rouger-premium_1.html` via Chrome (Fichier → Imprimer →
+  Enregistrer en PDF), et le sauvegarder sous ce nom exact à la racine du
+  dossier CV. Volontairement pas généré depuis cette session : mon seul outil
+  de rendu PDF ici (WeasyPrint, pas de Chrome disponible) a un bug confirmé
+  sur les icônes de zone de la capsule (voir plus bas) — je préfère qu'un
+  vrai Chrome produise le fichier final plutôt que de publier un PDF
+  potentiellement moche.
+- **`og:url` et `og:image` ajoutés**, plus `og:image:width/height` et
+  `twitter:card` en bonus. Image `og-image.png` générée (1200×630, palette du
+  site, nom + accroche + url) et placée à la racine du dépôt à côté
+  d'`index.html` — donc `https://bastienrouger-cloud.github.io/CV/og-image.png`
+  une fois publié.
+- **Nom de domaine** (`cv.tonnom.fr` plutôt que `bastienrouger-cloud.github.io/CV/`)
+  — noté, pas d'action : ça demande d'acheter/configurer un domaine, hors
+  périmètre d'une session Cowork. À reprendre si Bastien franchit le pas.
+
+**Note technique (pour la suite, pas pour Bastien) :** en creusant l'affichage
+des icônes de zone du CV (`.zone-entete` flex + SVG), j'ai isolé un vrai bug
+de rendu WeasyPrint — pas juste une couleur, l'icône se retrouve carrément mal
+positionnée hors du flux flex, reproduit sur un cas minimal isolé, indépendant
+de la structure HTML (testé avec et sans wrapper dédié). Ce n'est
+vraisemblablement pas un bug réel dans Chrome (le même motif icône+flex
+fonctionne correctement ailleurs, confirmé par capture d'écran réelle de
+Bastien). Conclusion pratique : ne plus utiliser WeasyPrint comme preuve
+suffisante pour ce genre de motif flex+SVG précis ; il reste utile pour le
+reste (mise en page, pagination, largeurs de texte).
+
+## 10 ter. Emphase dans l'accroche (1er août 2026)
+
+Quatre mots/groupes mis en avant dans le paragraphe d'accroche (site + CV) :
+« vacations », « tournées libérales », « Creuse », « durablement ». Choix :
+**gras + `var(--fonce)`** (`<strong>`, pas de couleur accent/sable ni
+d'italique). Raisons :
+- L'italique nuit au repérage rapide à l'œil — contraire au but (ce sont des
+  mots qu'un recruteur qui scanne doit accrocher).
+- L'accent sable (`--accent`) est déjà utilisé partout ailleurs comme couleur
+  d'emphase, mais seulement sur fond sombre ou en filet/bordure — jamais
+  comme couleur de texte de lecture sur fond clair (contraste insuffisant
+  sur papier/crème). Le gras + fonce reprend exactement le traitement déjà
+  utilisé pour `.poste li.fort` et `table.tableau td.fort` : cohérent avec le
+  reste du document plutôt qu'un nouveau code visuel.
+- Ces 4 mots ne sont pas décoratifs : « Creuse » est le mot-clé n°1 pour un
+  recruteur de la zone, « durablement » répond directement à l'objection
+  d'instabilité (section 8), « vacations »/« tournées libérales » résument
+  les deux régimes d'exercice. D'où le choix d'un signal fort et sobre plutôt
+  que ludique.
+
 ## 11. Plan du site
 
 Deux dépôts séparés, aucun mélange avec Humming Cob.

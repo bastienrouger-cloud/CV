@@ -79,6 +79,18 @@ nav.principale a:hover, nav.principale a.actif{ border-bottom-color:var(--accent
 .bouton-contact:hover{ background:var(--accent-clair); }
 .bouton-contact:active{ transform:scale(.96); }
 
+.bandeau-actions{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+
+.bouton-secondaire{
+  display:inline-block; font-size:12.5px; font-weight:700; letter-spacing:.2px;
+  padding:7px 17px; border-radius:20px; white-space:nowrap;
+  background:transparent; color:var(--clair); text-decoration:none;
+  border:1.5px solid rgba(228,214,187,.55);
+  transition:border-color .15s ease, background .15s ease, transform .1s ease;
+}
+.bouton-secondaire:hover{ border-color:var(--accent-clair); background:rgba(255,255,255,.06); }
+.bouton-secondaire:active{ transform:scale(.96); }
+
 /* Bouton contact fixe, mobile uniquement */
 .contact-mobile{
   display:none;
@@ -113,6 +125,7 @@ main.page-corps{ max-width:1140px; margin:0 auto; padding:34px 24px 60px; }
   font-weight:700;
   color:var(--fonce);
 }
+.accroche strong{ font-weight:700; color:var(--fonce); }
 
 /* ---------------- Titres de section ---------------- */
 h2.titre{
