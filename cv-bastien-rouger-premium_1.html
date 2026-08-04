@@ -188,6 +188,17 @@
     display:flex; justify-content:space-between;
   }
 
+  /* Le dégradé de la capsule finit clair (sable) à droite : sur cette 3e
+     zone, les pastilles en texte clair devenaient illisibles (sable sur
+     beige). Titre et icône restent en sable (accent-clair), voulu ainsi ;
+     seules les pastilles basculent en texte foncé sur fond blanc plus
+     opaque pour rester lisibles. */
+  .zone:last-child .puces span{
+    color:var(--encre);
+    background:rgba(255,255,255,.55);
+    border-color:rgba(19,41,61,.18);
+  }
+
   /* ---------- Chiffres en cartes ---------- */
   .chiffres{
     display:grid; grid-template-columns:repeat(4,1fr); gap:5px; margin-top:7px;
@@ -331,15 +342,15 @@
     </dl>
 
     <h2>Formation</h2>
-    <p class="diplome"><b>2016 — Diplôme d’État d’Infirmier</b><span>IFSI de Quimper</span></p>
     <p class="diplome"><b>2023 — CQP Ouvrier viticole</b><span>MFR de Claret</span></p>
+    <p class="diplome"><b>2016 — Diplôme d’État d’Infirmier</b><span>IFSI de Quimper</span></p>
     <p class="diplome"><b>2012 — Baccalauréat ST2S</b><span>Lycée Talensac, Nantes</span></p>
     <p class="diplome"><b>PSE2</b><span>Premiers secours en équipe niveau 2</span></p>
 
     <h2>En dehors</h2>
-    <p class="diplome"><b>Élevage d’Irish Cob</b><span>Activité familiale — à l’origine du projet d’installation en Creuse</span></p>
     <p class="diplome"><b>Secourisme bénévole</b><span>FNPC Loire-Atlantique, équipier — 2012 à 2016. Postes de secours sur grands rassemblements (Vieilles Charrues).</span></p>
-    <p class="diplome"><b>Aussi</b><span>Développement web · moto · photographie</span></p>
+    <p class="diplome"><b>Loisirs</b><span>Développement web · moto · photographie</span></p>
+    <p class="diplome"><b>Élevage d’Irish Cob</b><span>Activité familiale — à l’origine du projet d’installation en Creuse</span></p>
 
     <h2>Disponibilité</h2>
     <p class="dispo">Immédiate pour des remplacements ponctuels et des missions.<br>

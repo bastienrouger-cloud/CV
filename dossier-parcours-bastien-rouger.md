@@ -626,6 +626,54 @@ Aperçu.
 
 ---
 
+## 10 sexies. Formation, En dehors, contraste capsule (4 août 2026)
+
+Trois corrections appliquées sur les trois documents (`index.html`,
+`cv-bastien-rouger-premium_1.html`, `cv-bastien-rouger-ats.html`) :
+
+- **Formation, ordre incohérent.** L'ordre affiché était 2016, 2023, 2012 —
+  ni chronologique ni thématique, jugé confus par Bastien. Choix : ordre
+  antéchronologique (le plus récent en premier), pour rester cohérent avec
+  la convention déjà utilisée dans Parcours. Nouvel ordre : **2023 — CQP
+  Ouvrier viticole, 2016 — Diplôme d'État d'Infirmier, 2012 — Baccalauréat
+  ST2S**, puis **PSE2** en dernier (seule entrée sans date, une certification
+  plutôt qu'un diplôme).
+- **En dehors, ordre et intitulé.** Ancien ordre : Élevage d'Irish Cob,
+  Secourisme bénévole, Aussi. Nouvel ordre demandé par Bastien : le
+  secourisme d'abord (le plus pertinent pour le métier d'IDE), puis les
+  loisirs, l'élevage en dernier — Bastien a précisé que l'élevage est
+  aujourd'hui autant une activité de promotion en ligne en vue d'une future
+  activité annexe qu'une aide directe à Alice, ce qui le rapproche d'un
+  projet personnel à part plutôt que d'un argument professionnel direct
+  (contrairement à sa fonction éditoriale d'origine, qui reste : répondre à
+  « pourquoi la Creuse » — cf. section 7). L'intitulé « Aussi » (jugé trop
+  vague par Bastien, à renommer) devient **« Loisirs »** — cohérent avec les
+  autres intitulés de la rubrique (noms courts, pas de tournure creuse).
+  Nouvel ordre final : Secourisme bénévole, Loisirs, Élevage d'Irish Cob.
+- **Contraste capsule Terrains d'exercice (CV imprimable uniquement).** Le
+  dégradé de la capsule va du bleu marine (gauche) au sable clair (droite,
+  zone Proximité). Le texte des zones était uniformément clair
+  (`var(--accent-clair)` pour les titres, `var(--clair)` pour les pastilles)
+  — sur la zone Proximité, ça donnait du texte sable sur fond sable, illisible.
+  Corrigé avec un override ciblé sur la dernière zone (`.zone:last-child`) :
+  titre et icône en `var(--fonce)` (bleu marine foncé), pastilles en texte
+  foncé sur fond blanc plus opaque (`rgba(255,255,255,.55)`) avec bordure
+  foncée légère. Les deux premières zones (fond sombre) ne changent pas.
+  Vérifié par rendu WeasyPrint : contraste correct sur les trois zones.
+  Le site (`index.html`) n'était pas concerné — son panneau interactif
+  utilise des cartes à fond blanc indépendantes de la position dans le
+  dégradé, pas de problème de contraste équivalent. Le CV ATS non plus —
+  chaque zone y a sa propre classe et sa propre couleur de texte définie
+  individuellement (pas de dégradé continu partagé).
+  **Ajustement (4 août 2026) :** Bastien a demandé de remettre le titre
+  « PROXIMITÉ » et son icône en sable (`var(--accent-clair)`), jugé plus
+  réussi visuellement malgré le contraste plus faible sur cette zone —
+  seules les pastilles gardent le texte foncé/fond blanc (c'était le vrai
+  problème de lisibilité signalé au départ, les pastilles en bloc plein sont
+  plus sensibles au contraste qu'un titre en gras avec letter-spacing).
+
+---
+
 ## 11. Plan du site
 
 Deux dépôts séparés, aucun mélange avec Humming Cob.
