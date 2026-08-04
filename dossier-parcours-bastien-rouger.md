@@ -483,9 +483,12 @@ QR fait papier → web, mais rien ne fait web → papier. Trois actions :
   potentiellement moche.
 - **`og:url` et `og:image` ajoutés**, plus `og:image:width/height` et
   `twitter:card` en bonus. Image `og-image.png` générée (1200×630, palette du
-  site, nom + accroche + url) et placée à la racine du dépôt à côté
+  site, nom + accroche) et placée à la racine du dépôt à côté
   d'`index.html` — donc `https://bastienrouger-cloud.github.io/CV/og-image.png`
-  une fois publié.
+  une fois publié. L'adresse GitHub Pages retirée de l'image le 1er août
+  2026 (question de Bastien) : redondante avec ce qu'affichent déjà les
+  messageries à côté de l'aperçu, et ça mettait en avant une URL qu'on a
+  nous-mêmes qualifiée de provisoire. À refaire si un nom de domaine arrive.
 - **Nom de domaine** (`cv.tonnom.fr` plutôt que `bastienrouger-cloud.github.io/CV/`)
   — noté, pas d'action : ça demande d'acheter/configurer un domaine, hors
   périmètre d'une session Cowork. À reprendre si Bastien franchit le pas.
