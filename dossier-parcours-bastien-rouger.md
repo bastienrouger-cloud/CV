@@ -3,7 +3,7 @@
 Document de travail. Rassemble tout ce qui a servi à construire le CV, pour reprise
 en session Cowork (site perso / portfolio).
 
-Dernière mise à jour : 31 juillet 2026.
+Dernière mise à jour : 4 août 2026.
 
 ---
 
@@ -523,6 +523,108 @@ d'italique). Raisons :
   d'instabilité (section 8), « vacations »/« tournées libérales » résument
   les deux régimes d'exercice. D'où le choix d'un signal fort et sobre plutôt
   que ludique.
+
+## 10 quater. CV compagnon ATS — mono-colonne (4 août 2026)
+
+**Contexte.** Question de Bastien : les recruteurs des grosses structures filtrent
+souvent les CV via une IA de parsing avant lecture humaine — est-ce que le CV
+imprimable (deux colonnes) passe ce filtrage ?
+
+**Test empirique fait dans cette session** (pas une supposition) : rendu du CV
+deux colonnes en PDF (WeasyPrint) puis extraction du texte (`pdftotext`), en
+proxy de ce que ferait un moteur ATS. Résultat : **mélange sévère** — le texte
+de la colonne latérale (contact, capsule terrains d'exercice) s'interpose au
+milieu des paragraphes de la colonne principale, et les 3 colonnes de la
+capsule s'entrelacent. Un CV en grille CSS multi-colonnes n'a aucune garantie
+d'ordre de lecture pour un parseur : il suit l'ordre du texte dans le flux,
+pas la mise en page visuelle. Verdict honnête : **le CV deux colonnes ne
+passerait probablement pas un filtrage ATS strict.**
+
+**Décision de Bastien** (après discussion sur le fait que c'est d'abord une IA
+puis un humain qui lisent) : garder le CV deux colonnes tel quel — visuel,
+déjà validé, destiné aux candidatures directes/humaines — et créer un
+**second document séparé**, mono-colonne, en secours pour les candidatures
+dans de grandes structures (leur ATS). Le travail existant (site, CV deux
+colonnes) n'est pas modifié.
+
+**Nouveau fichier : `cv-bastien-rouger-ats.html`.** Même contenu, même palette
+et variables CSS que les deux autres documents (cohérence visuelle), mais
+structure fondamentalement différente :
+- **Une seule colonne**, du haut en bas — aucune grille CSS multi-colonnes
+  nulle part dans le document. En-tête plein largeur (nom, métier,
+  coordonnées, QR) suivi du corps en flux linéaire unique.
+- **Terrains d'exercice** : les 3 zones (soins critiques / hospitalisation /
+  proximité) empilées verticalement (`flex-direction:column`) au lieu du
+  panneau à 3 colonnes du CV imprimable.
+- **Parcours** : dates au-dessus du poste (`.dates` puis `.intitule`/`.lieu`)
+  au lieu d'une grille date-colonne / contenu-colonne — même raison, éviter
+  toute structure en colonnes que le parseur pourrait mal ordonner.
+- **Icônes retirées des zones Terrains d'exercice.** Le même bug de rendu
+  WeasyPrint déjà rencontré sur le CV imprimable (SVG en flex mal positionné/
+  couleur incorrecte, cf. section 10 bis) est réapparu ici. Comme ce document
+  n'a qu'un objectif — la fiabilité du parsing, pas l'esthétique — décision
+  pragmatique de simplement enlever les icônes plutôt que de rejouer
+  l'investigation. Titres en texte seul (`<h3>`), pastilles en texte
+  séparées par « · ».
+- **Pas de contrainte 1 page.** Le CV imprimable utilise une variable
+  d'échelle pour tenir sur une A4 ; ce document-ci n'a pas cette contrainte
+  et coule naturellement sur **2 pages**. Testé : forcer 1 page aurait
+  demandé de descendre sous 8pt de corps de texte, illisible pour la lecture
+  humaine qui suit le filtrage IA. Deux pages restent un format standard pour
+  8 ans d'exercice et 18 établissements, notamment pour une grande structure
+  habituée à des CV plus longs. Page 1 dense (en-tête, bandeau mobilité,
+  accroche, terrains d'exercice, chiffres clés, début du parcours), page 2
+  environ à moitié remplie (fin du parcours, formation, savoir-faire, en
+  dehors, disponibilité) — marge confortable, rien de tassé artificiellement.
+- **QR code et lien vers le site conservés** (même bloc que le CV imprimable,
+  adapté au fond sombre de l'en-tête) : répond à la question de Bastien
+  « on garde le lien vers github aussi ? » — oui, le lien reste un plus pour
+  le lecteur humain qui vient après le filtrage IA, et ne gêne pas
+  l'extraction de texte (c'est un bloc annexe, pas dans le flux de contenu
+  principal).
+
+**Vérification.** Même méthodologie que le constat initial : rendu WeasyPrint
+puis `pdftotext -layout`. Résultat : extraction **propre et parfaitement
+linéaire**, du nom en tête jusqu'à la disponibilité en fin de document, aucun
+mélange ni interversion de blocs. Confirme que le passage au mono-colonne
+résout le problème identifié sur le CV deux colonnes.
+
+**Fichier livré :** `cv-bastien-rouger-ats.html`, à la racine du dossier CV,
+à côté d'`index.html` et `cv-bastien-rouger-premium_1.html`. Pas encore lié
+depuis le site (uniquement une alternative à envoyer directement aux grandes
+structures, à la demande de Bastien) — à discuter si un lien de téléchargement
+doit être ajouté quelque part.
+
+---
+
+## 10 quinquies. Ombres portées → rectangles opaques dans Aperçu macOS (4 août 2026)
+
+Bastien a exporté `cv-bastien-rouger.pdf` depuis Chrome (comme prévu section
+10 bis) : nickel dans un navigateur, mais dans **Aperçu.app**, les
+`box-shadow` (colonne sombre, encadré mobilité, capsule terrains d'exercice,
+cartes chiffres clés) s'affichaient en rectangles gris opaques au lieu
+d'ombres douces.
+
+**Cause probable** : incompatibilité connue entre le moteur d'export PDF de
+Chrome (Skia) et le moteur de rendu PDF de macOS (Quartz/PDFKit, utilisé par
+Aperçu) sur les ombres avec flou + transparence — Chrome encode l'ombre d'une
+façon qu'Aperçu ne sait pas décomposer, et le rendu se dégrade en aplat. Un
+navigateur réaffiche le même PDF avec son propre moteur, d'où le rendu
+correct dans ce cas précis.
+
+**Fix appliqué** (`cv-bastien-rouger-premium_1.html`) : neutralisation des
+`box-shadow` concernées (`.flanc`, `.mobilite`, `.capsule`,
+`.chiffres div`) uniquement dans `@media print` — l'écran garde ses ombres
+inchangées. La définition visuelle des cartes reste assurée par les bordures
+déjà en place (`border`, `border-top` accent), donc pas de perte de lisibilité
+en print.
+
+**Action manuelle restante (Bastien)** : refaire l'export
+`cv-bastien-rouger.pdf` depuis Chrome (Imprimer → Enregistrer en PDF) pour
+que le fichier livré sur le site reflète ce correctif, et revérifier dans
+Aperçu.
+
+---
 
 ## 11. Plan du site
 

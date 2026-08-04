@@ -261,6 +261,16 @@
     .capsule{ grid-template-columns:repeat(3,1fr); }
     .chiffres{ grid-template-columns:repeat(4,1fr); }
     .poste{ grid-template-columns:78px 1fr; }
+
+    /* Les box-shadow avec flou/transparence sont mal restitués par le moteur
+       PDF de macOS (Aperçu) quand le PDF vient d'un export Chrome — l'ombre
+       devient un rectangle opaque au lieu d'un flou doux. On les neutralise
+       à l'impression et on garde la définition visuelle par les bordures
+       déjà en place (border, border-top accent). */
+    .flanc{ box-shadow:none; }
+    .mobilite{ box-shadow:none; }
+    .capsule{ box-shadow:none; }
+    .chiffres div{ box-shadow:none; }
   }
 
   @media screen and (max-width:760px){
