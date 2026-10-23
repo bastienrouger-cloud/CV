@@ -18,9 +18,17 @@
 <link rel="icon" href="favicon.ico" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#13293D">
+<script>document.documentElement.className+=" js";</script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<noscript>
+<div class="alerte-js" role="alert">
+  <strong>JavaScript est désactivé dans votre navigateur.</strong>
+  Le panneau des terrains d'exercice, les animations et le bouton « Me contacter » ne fonctionnent pas sans lui ; le reste de la page est lisible.
+  Pour me joindre : bastien.rouger <em>[arobase]</em> gmail.com, ou le PDF à télécharger ci-dessus.
+</div>
+</noscript>
 
 <header class="site">
   <div class="site-inner">
@@ -42,7 +50,7 @@
     </nav>
     <div class="bandeau-actions">
       <a class="bouton-secondaire" href="cv-bastien-rouger.pdf" download>Télécharger le CV (PDF)</a>
-      <a class="bouton-contact bandeau-contact" href="mailto:bastien.rouger@gmail.com?subject=Contact%20depuis%20le%20site&body=Bonjour%20Bastien%2C%0D%0A%0D%0A">Me contacter</a>
+      <a class="bouton-contact bandeau-contact" href="#" data-contact>Me contacter</a>
     </div>
   </div>
 </div>
@@ -326,7 +334,7 @@
       </div>
 
       <div class="chrono-groupe">
-        <h3>Reconversion agricole</h3>
+        <h3>Parenthèse viticole</h3>
         <div class="chrono-item">
           <div class="periode">2021 → 2023</div>
           <div>CQP Ouvrier viticole, MFR de Claret. Ouvrier au domaine Le Clos du Martinou, Liouc (30) — domaine de 17 ha : conduite de tracteur, maintenance des outils, travaux en vert, cultures annexes.</div>
@@ -361,7 +369,7 @@
         </div>
         <div class="chrono-item">
           <div class="periode">Depuis 2026</div>
-          <div>Majoritairement libéral (cabinets de Domessargues jusqu'en septembre, Combas, Carnas), quelques missions d'intérim.</div>
+          <div>Majoritairement libéral (Combas, Carnas), quelques missions d'intérim.</div>
         </div>
       </div>
 
@@ -407,7 +415,7 @@
           <tr>
             <td class="fort">Combas</td>
             <td>Avril 2025 → en cours</td>
-            <td>Soins très variés : retours de bloc à domicile avec perfusion, HAD chimiothérapie, fin de vie, surveillance de prématuré. Peu de BSI, tournée très changeante.</td>
+            <td>Soins très variés : retours de bloc à domicile avec perfusion, HAD chimiothérapie, fin de vie, surveillance de prématuré. Tournée variée, peu de BSI.</td>
             <td>20 à 40 patients/jour. 1 week-end par mois + vacances et dépannages.</td>
           </tr>
           <tr>
@@ -425,14 +433,14 @@
           <tr>
             <td>Domessargues</td>
             <td>Février → septembre 2026</td>
-            <td>Quasi exclusivement du BSI — base de charge.</td>
+            <td>Principalement des BSI.</td>
             <td>~10 BSI/jour, 8 à 10 jours/mois.</td>
           </tr>
           <tr>
             <td class="fort">Carnas</td>
             <td>Juillet 2026 → en cours</td>
-            <td>Tournée en création, encore légère.</td>
-            <td>Léger.</td>
+            <td>Tournée en développement.</td>
+            <td>Selon les besoins du cabinet.</td>
           </tr>
         </tbody>
       </table>
@@ -443,7 +451,7 @@
 
 </main>
 
-<a class="contact-mobile" href="mailto:bastien.rouger@gmail.com?subject=Contact%20depuis%20le%20site&body=Bonjour%20Bastien%2C%0D%0A%0D%0A">Me contacter</a>
+<a class="contact-mobile" href="#" data-contact>Me contacter</a>
 
 <script>
 (function(){
@@ -556,6 +564,15 @@
   }
   window.addEventListener('hashchange', ouvrirCible);
   ouvrirCible();
+})();
+</script>
+<script>
+/* Adresse assemblée à l'affichage : elle n'apparaît pas telle quelle dans le code de la page. */
+(function(){
+  var a = ['bastien.rouger', 'gmail.com'].join('@');
+  var lien = 'mailto:' + a + '?subject=' + encodeURIComponent('Contact depuis le site') + '&body=' + encodeURIComponent('Bonjour Bastien,\n\n');
+  var liens = document.querySelectorAll('[data-contact]');
+  for (var i = 0; i < liens.length; i++) liens[i].setAttribute('href', lien);
 })();
 </script>
 

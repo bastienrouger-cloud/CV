@@ -382,3 +382,10 @@ table.tableau td.fort{ font-weight:700; color:var(--fonce); }
   .bandeau-contact{ display:none; }
   .contact-mobile{ display:block; }
 }
+
+/* ---------------- Sans JavaScript ---------------- */
+.alerte-js{
+  padding:12px 20px; text-align:center; font-size:13.5px; line-height:1.5;
+  background:#FFF6DC; color:var(--fonce); border-bottom:2px solid var(--or);
+}
+html:not(.js) [data-contact]{ display:none !important; }
