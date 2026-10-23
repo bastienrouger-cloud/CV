@@ -224,12 +224,24 @@ p.chapo.chapo-pleine{ max-width:none; }
 /* ---------------- Profil (formation, savoir-faire, en dehors, disponibilité) ---------------- */
 .profil-grille{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:6px; }
 .profil-carte{
-  background:#fff; border:1px solid var(--bleu-filet); border-radius:16px; padding:18px 20px;
-  box-shadow:0 2px 8px rgba(19,41,61,.05);
+  position:relative; overflow:hidden;
+  background:linear-gradient(180deg,#fff 0%,#F1F6FB 100%);
+  border:1px solid var(--bleu-filet); border-radius:16px; padding:22px 20px 18px;
+  box-shadow:0 2px 8px rgba(19,41,61,.06);
+}
+.profil-carte::before{
+  content:""; position:absolute; left:0; right:0; top:0; height:5px;
+  background:linear-gradient(90deg,var(--nuit) 0%,var(--bleu) 100%);
 }
 .profil-carte h3{
-  font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase;
+  display:flex; align-items:center; gap:10px;
+  font-size:11.5px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase;
   color:var(--bleu); margin-bottom:15px;
+}
+.carte-icone{
+  display:inline-flex; align-items:center; justify-content:center; flex:none;
+  width:30px; height:30px; border-radius:10px; color:var(--or);
+  background:linear-gradient(135deg,var(--nuit) 0%,#2A5679 100%);
 }
 .profil-carte p{ font-size:13.5px; line-height:1.5; }
 .profil-carte .diplome{ margin-bottom:9px; }
@@ -238,25 +250,30 @@ p.chapo.chapo-pleine{ max-width:none; }
 .profil-carte .diplome span{ display:block; color:var(--sourd); font-size:12.5px; line-height:1.35; margin-top:1px; }
 .profil-carte .tags{ display:flex; flex-wrap:wrap; gap:6px; }
 .profil-carte .tags span{
-  font-size:12px; padding:3px 11px; background:var(--papier); border:1px solid var(--bleu-filet);
-  border-radius:12px; color:var(--encre);
+  font-size:12px; padding:3px 11px; background:#E3EDF6; border:1px solid var(--bleu-filet);
+  border-radius:12px; color:var(--fonce);
 }
 .profil-carte .tags.tags-espacees{ margin-top:10px; }
 .profil-carte .savoir-ligne{ margin-bottom:8px; }
-.profil-carte .savoir-label{ color:var(--fonce); }
+.profil-carte .savoir-label{ color:var(--bleu); }
 
 /* ---------------- Chiffres ---------------- */
 .chiffres{
   display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:14px;
 }
 .chiffres div{
-  background:#fff; border:1px solid var(--bleu-filet);
-  border-radius:16px; padding:15px 8px; text-align:center;
+  position:relative; overflow:hidden;
+  background:linear-gradient(180deg,#fff 0%,#EAF1F8 100%); border:1px solid var(--bleu-filet);
+  border-radius:16px; padding:17px 8px 14px; text-align:center;
   box-shadow:0 2px 8px rgba(19,41,61,.06);
+}
+.chiffres div::before{
+  content:""; position:absolute; left:0; right:0; top:0; height:4px;
+  background:var(--or);
 }
 .chiffres b{
   display:block; font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
-  font-size:24px; font-weight:700; color:var(--fonce); line-height:1;
+  font-size:26px; font-weight:700; color:var(--bleu); line-height:1;
 }
 .chiffres span{ display:block; margin-top:5px; font-size:11.5px; color:var(--sourd); line-height:1.25; }
 
